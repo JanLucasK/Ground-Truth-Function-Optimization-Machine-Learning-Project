@@ -42,8 +42,3 @@ for x_function in functions:
 
         # Save the DataFrame to a CSV file
         random_rows.to_parquet(f'./data/raw/f_{x_function}_s_{sample}.parquet', index=False)
-
-    # plt.figure(figsize=(6,6))
-    # plt.pcolormesh(xgrid, ygrid, results_grid, cmap='inferno', shading='nearest')
-    # plt.scatter(*fn.x_opt.tolist()[::-1], marker='x', c='r')
-    # plt.show()
