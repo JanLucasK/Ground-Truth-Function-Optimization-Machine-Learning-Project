@@ -2,7 +2,14 @@
 
 ## Structure
 
-[Folders](#folders)
+[1. Project Description](#project-description) 
+
+[2. Installation](#installation)
+
+[3. Folders](#folders)
+
+[4. Papers](#papers)
+[](#)
 
 ## Project Description
 
@@ -45,3 +52,14 @@ And you can start executing code from this repository.
 |[notebooks](https://github.com/JanLucasK/Ground-Truth-Function-Optimization-Machine-Learning-Project/tree/main/notebooks)|Contains jupyter notebooks for EDA or Analysis|
 |[src](https://github.com/JanLucasK/Ground-Truth-Function-Optimization-Machine-Learning-Project/tree/main/src)|Contains code and functions which are used in bin (main files)|
 |[tests](https://github.com/JanLucasK/Ground-Truth-Function-Optimization-Machine-Learning-Project/tree/main/tests)|Contains tests to ensure working code with small examples|
+
+
+## Papers
+
+In this project mutliple ideas anc arcitectures from papers were used
+
+|Paper|Example Code|
+|---|---|
+|[PriorVAE](https://arxiv.org/abs/2110.10422)|[Github Repository](https://github.com/elizavetasemenova/PriorVAE)|
+|[πVAE](https://arxiv.org/abs/2002.06873)|[Github Repository](https://github.com/s-mishra/pivae)|
+|||
