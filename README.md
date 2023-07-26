@@ -22,3 +22,14 @@ conda activate MLP_Env
 
 And you can start executing code from this repository.
 
+
+### Folders
+
+|Folder|Description|
+|---|---|
+|[bin](https://github.com/JanLucasK/Ground-Truth-Function-Optimization-Machine-Learning-Project/tree/main/bin)|Contains scripts and main files|
+|[config](https://github.com/JanLucasK/Ground-Truth-Function-Optimization-Machine-Learning-Project/tree/main/config)|Contains config files|
+|[data](https://github.com/JanLucasK/Ground-Truth-Function-Optimization-Machine-Learning-Project/tree/main/data)|Contains raw and processed data|
+|[notebooks](https://github.com/JanLucasK/Ground-Truth-Function-Optimization-Machine-Learning-Project/tree/main/notebooks)|Contains jupyter notebooks for EDA or Analysis|
+|[src](https://github.com/JanLucasK/Ground-Truth-Function-Optimization-Machine-Learning-Project/tree/main/src)|Contains code and functions which are used in bin (main files)|
+|[tests](https://github.com/JanLucasK/Ground-Truth-Function-Optimization-Machine-Learning-Project/tree/main/tests)|Contains tests to ensure working code with small examples|
