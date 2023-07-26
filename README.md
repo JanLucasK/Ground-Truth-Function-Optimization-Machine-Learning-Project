@@ -1,6 +1,18 @@
 # Ground-Truth-Function-Optimization-Machine-Learning-Project
 
-### Installation
+## Structure
+
+[Folders](#folders)
+
+## Project Description
+
+#### Motivation:
+When developing algorithms, it's essential to evaluate their performance. For classical machine learning, this involves using test datasets to assess model performance. However, not all algorithms work with static datasets; some work with functions or distributions. For instance, optimization algorithms require test functions to evaluate their performance. These test functions should closely resemble the real-world ground truth function that represents the problem to be optimized. Creating appropriate test functions that meet various requirements (e.g., difficulty, cost, diversity, flexibility, and transparency) can be challenging.
+
+#### Problem:
+The goal of this project is to generate test functions for optimization algorithms using artificial intelligence and machine learning models. The focus is on choosing suitable approaches/models and practical implementation to assess their performance. The synthetic ground truth function for evaluation will be the BBOB function suite.
+
+## Installation
 
 To clone the repository, change to the directory you want the git to be initialized and use following command:
 
@@ -23,7 +35,7 @@ conda activate MLP_Env
 And you can start executing code from this repository.
 
 
-### Folders
+## Folders
 
 |Folder|Description|
 |---|---|
