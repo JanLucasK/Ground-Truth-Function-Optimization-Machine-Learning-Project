@@ -30,7 +30,7 @@ git clone https://github.com/JanLucasK/Ground-Truth-Function-Optimization-Machin
 To install python and libarys from the `environment.yml` file, first install [Anaconda](https://docs.anaconda.com/free/anaconda/install/index.html). After that and cloning the repository, activate anaconda and use following command to create a new environment from the `environment.yml` file:
 
 ```
-conda MLP_Env create -f environment.yml
+conda env create -n MLP_Env -f environment.yml
 ```
 
 After that just activate the environment with:
