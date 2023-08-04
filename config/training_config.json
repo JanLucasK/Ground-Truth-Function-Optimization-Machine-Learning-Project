@@ -1,0 +1,33 @@
+{
+
+"seed": 0,
+
+"_comment": "This is the config for architecture",
+"conditional": true,
+"input_dim": 80,
+"hidden_dim": 60,
+"z_dim": 40,
+
+"_comment": "This is the config for data generation",
+"new_data": true,  
+"save_data": false, 
+"batch_size": 500,
+"samples": 100000,
+
+
+"_comment": "This is the config for VAE setup",
+"vae_sd": 1, 
+"n_epochs": 800,       
+"learning_rate": 1e-3,
+"train_vae": true,      
+"save_vae": false,
+"load_vae": false,     
+
+"_comment": "This is the config for MCMC setup",
+"num_warmup": 1000,
+"num_samples": 4000,
+"num_chains": 4,
+"thinning": 1,
+"true_ls": 0.2
+       
+}
