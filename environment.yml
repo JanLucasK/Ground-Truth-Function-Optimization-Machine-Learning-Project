@@ -1,5 +1,6 @@
 name: MLP_Env
 channels:
+  - pytorch
   - defaults
 dependencies:
   - _ipyw_jlab_nb_ext_conf=0.1.0=py39h06a4308_1
@@ -47,9 +48,9 @@ dependencies:
   - brunsli=0.1=h2531618_0
   - bzip2=1.0.8=h7b6447c_0
   - c-ares=1.18.1=h7f8727e_0
-  - ca-certificates=2022.3.29=h06a4308_1
+  - ca-certificates=2023.05.30=h06a4308_0
   - cachetools=4.2.2=pyhd3eb1b0_0
-  - certifi=2021.10.8=py39h06a4308_2
+  - certifi=2023.7.22=py39h06a4308_0
   - cffi=1.15.0=py39hd667e15_1
   - cfitsio=3.470=hf0d0db6_6
   - chardet=4.0.0=py39h06a4308_1003
@@ -69,6 +70,7 @@ dependencies:
   - cookiecutter=1.7.3=pyhd3eb1b0_0
   - cryptography=3.4.8=py39hd23ed53_0
   - cssselect=1.1.0=pyhd3eb1b0_0
+  - cudatoolkit=11.3.1=h2bc3f7f_2
   - curl=7.82.0=h7f8727e_0
   - cycler=0.11.0=pyhd3eb1b0_0
   - cython=0.29.28=py39h295c915_0
@@ -243,14 +245,12 @@ dependencies:
   - notebook=6.4.8=py39h06a4308_0
   - numba=0.55.1=py39h51133e4_0
   - numexpr=2.8.1=py39h6abb31d_0
-  - numpy=1.21.5=py39he7a7128_1
-  - numpy-base=1.21.5=py39hf524024_1
   - numpydoc=1.2=pyhd3eb1b0_0
   - olefile=0.46=pyhd3eb1b0_0
   - oniguruma=6.9.7.1=h27cfd23_0
   - openjpeg=2.4.0=h3ad879b_0
   - openpyxl=3.0.9=pyhd3eb1b0_0
-  - openssl=1.1.1n=h7f8727e_0
+  - openssl=1.1.1v=h7f8727e_0
   - packaging=21.3=pyhd3eb1b0_0
   - pandocfilters=1.5.0=pyhd3eb1b0_0
   - panel=0.13.0=py39h06a4308_0
@@ -314,6 +314,8 @@ dependencies:
   - python-lsp-server=1.2.4=pyhd3eb1b0_0
   - python-slugify=5.0.2=pyhd3eb1b0_0
   - python-snappy=0.6.0=py39h2531618_3
+  - pytorch=1.12.1=py3.9_cuda11.3_cudnn8.3.2_0
+  - pytorch-mutex=1.0=cuda
   - pytz=2021.3=pyhd3eb1b0_0
   - pyviz_comms=2.0.2=pyhd3eb1b0_0
   - pywavelets=1.3.0=py39h7f8727e_0
@@ -426,25 +428,32 @@ dependencies:
   - zope.interface=5.4.0=py39h7f8727e_0
   - zstd=1.4.9=haebb681_0
   - pip:
-      - bbobtorch==1.0.1
-      - cmake==3.27.0
-      - cramjam==2.6.2
-      - fastparquet==2023.7.0
-      - lit==16.0.6
-      - nvidia-cublas-cu11==11.10.3.66
-      - nvidia-cuda-cupti-cu11==11.7.101
-      - nvidia-cuda-nvrtc-cu11==11.7.99
-      - nvidia-cuda-runtime-cu11==11.7.99
-      - nvidia-cudnn-cu11==8.5.0.96
-      - nvidia-cufft-cu11==10.9.0.58
-      - nvidia-curand-cu11==10.2.10.91
-      - nvidia-cusolver-cu11==11.4.0.1
-      - nvidia-cusparse-cu11==11.7.4.91
-      - nvidia-nccl-cu11==2.14.3
-      - nvidia-nvtx-cu11==11.7.91
-      - pandas==2.0.3
-      - pyarrow==12.0.1
-      - torch==2.0.1
-      - triton==2.0.0
-      - tzdata==2023.3
+    - bbobtorch==1.0.1
+    - cmake==3.27.0
+    - condacolab==0.1.6
+    - cramjam==2.6.2
+    - fastparquet==2023.7.0
+    - jax==0.3.25
+    - jaxlib==0.3.25
+    - lit==16.0.6
+    - ml-dtypes==0.2.0
+    - numpy==1.22.4
+    - numpyro==0.10.1
+    - nvidia-cublas-cu11==11.10.3.66
+    - nvidia-cuda-cupti-cu11==11.7.101
+    - nvidia-cuda-nvrtc-cu11==11.7.99
+    - nvidia-cuda-runtime-cu11==11.7.99
+    - nvidia-cudnn-cu11==8.5.0.96
+    - nvidia-cufft-cu11==10.9.0.58
+    - nvidia-curand-cu11==10.2.10.91
+    - nvidia-cusolver-cu11==11.4.0.1
+    - nvidia-cusparse-cu11==11.7.4.91
+    - nvidia-nccl-cu11==2.14.3
+    - nvidia-nvtx-cu11==11.7.91
+    - opt-einsum==3.3.0
+    - pandas==2.0.3
+    - pyarrow==12.0.1
+    - torch==2.0.1
+    - triton==2.0.0
+    - tzdata==2023.3
 prefix: /home/jan/anaconda3/envs/MLP_Env
