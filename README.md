@@ -60,6 +60,6 @@ In this project mutliple ideas anc arcitectures from papers were used
 
 |Paper|Example Code|
 |---|---|
-|[PriorVAE](https://arxiv.org/abs/2110.10422)|[Github Repository](https://github.com/elizavetasemenova/PriorVAE)|
+|[PriorVAE](https://arxiv.org/abs/2110.10422)|[Github Repository](https://github.com/elizavetasemenova/priorcvae)|
 |[πVAE](https://arxiv.org/abs/2002.06873)|[Github Repository](https://github.com/s-mishra/pivae)|
 |||
