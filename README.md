@@ -6,9 +6,11 @@
 
 [2. Installation](#installation)
 
-[3. Folders](#folders)
+[3. Quick guide to git on Linux](#quick-guide-to-git-on-Linux)
 
-[4. Papers](#papers)
+[4. Folders](#folders)
+
+[5. Papers](#papers)
 [](#)
 
 ## Project Description
@@ -40,6 +42,34 @@ conda activate MLP_Env
 ```
 
 And you can start executing code from this repository.
+
+If you download new dependencies in the MLP_Env please use following command to update the environment.yml and push the changes:
+
+```
+conda env export > environment.yml
+```
+
+## Quick guide to git on Linux
+
+If you are not familiar, here are the most common commands you need for using git in the command line on Linux.
+
+To install git use:
+
+```
+sudo apt install git
+```
+
+To pull the newest version of a repository use with your credentials:
+```
+git pull
+```
+
+To commit changes use following commmands:
+```
+git add *
+git commit -m "<Your commit message>"
+git push
+```
 
 
 ## Folders
