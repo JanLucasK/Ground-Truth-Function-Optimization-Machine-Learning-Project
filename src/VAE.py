@@ -1,3 +1,9 @@
+from Encoder import Encoder
+from Decoder import Decoder
+
+import torch
+import torch.nn as nn
+
 class VAE(nn.Module):
     ''' This the VAE, which takes a encoder and decoder.
     '''

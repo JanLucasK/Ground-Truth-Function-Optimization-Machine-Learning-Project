@@ -1,3 +1,6 @@
+import torch
+import torch.nn as nn
+
 class Decoder(nn.Module):
     ''' This the decoder part of VAE
     '''
