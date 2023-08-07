@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import torch
 import bbobtorch
+import seaborn as sn
 
 # Set the device to CPU
 device = torch.device('cpu')
