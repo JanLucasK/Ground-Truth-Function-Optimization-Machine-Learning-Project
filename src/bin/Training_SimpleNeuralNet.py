@@ -113,8 +113,6 @@ class Trainer():
 
         plt.tight_layout()
 
-        plt.show()
-
         if self.save_image:
             # Save the plot as a PNG file
             function_name = self.data_file_path.split("/")[-1][0:4]
