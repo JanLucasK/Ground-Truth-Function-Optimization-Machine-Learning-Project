@@ -16,6 +16,13 @@ from torch.utils.data import DataLoader, TensorDataset
 class Trainer():
     def __init__(self):
 
+        if torch.cuda.is_available():
+            device = torch.device("cuda")
+            print("GPU is available and being used")
+        else:
+            device = torch.device("cpu")
+            print("GPU is not available, using CPU instead")
+
         with open('config/training_config.json', 'r') as file:
             config = json.load(file)
 
@@ -25,6 +32,7 @@ class Trainer():
         self.learning_rate = config["learning_rate"]
         self.batch_size = config["batch_size"]
         self.num_epochs = config["num_epochs"]
+        self.save_image = config["save_image"]
 
         self._load_data()
         self._scale_data()
@@ -104,7 +112,14 @@ class Trainer():
         axes[1].set_title('Heatmap of BBOB Function')
 
         plt.tight_layout()
+
         plt.show()
+
+        if self.save_image:
+            # Save the plot as a PNG file
+            function_name = self.data_file_path.split("/")[-1][0:4]
+            plt.savefig(f'images/{function_name}.png', dpi=300)  # You can adjust the dpi (dots per inch) as needed
+
 
 
     def train(self):
