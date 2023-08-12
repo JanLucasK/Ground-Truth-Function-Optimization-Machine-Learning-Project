@@ -14,7 +14,7 @@ from torch.utils.data import DataLoader, TensorDataset
 
 
 class Trainer():
-    def __init__(self):
+    def __init__(self, data_file_path, seed, neurons_per_layer, num_layers, learning_rate, batch_size, num_epochs, save_image, image_name):
 
         if torch.cuda.is_available():
             device = torch.device("cuda")
@@ -23,22 +23,24 @@ class Trainer():
             device = torch.device("cpu")
             print("GPU is not available, using CPU instead")
 
-        with open('config/training_config.json', 'r') as file:
-            config = json.load(file)
 
-        self.data_file_path = config["data_file_path"]
-        self.seed = config["seed"]
-        self.hidden_layers = config["hidden_layers"]
-        self.learning_rate = config["learning_rate"]
-        self.batch_size = config["batch_size"]
-        self.num_epochs = config["num_epochs"]
-        self.save_image = config["save_image"]
+
+        self.data_file_path = data_file_path
+        self.seed = seed
+        self.neurons_per_layer = neurons_per_layer
+        self.num_layers = num_layers
+        self.learning_rate = learning_rate
+        self.batch_size = batch_size
+        self.num_epochs = num_epochs
+        self.save_image = save_image
+        self.image_name = image_name
 
         self._load_data()
         self._scale_data()
         self._data_to_tensors()
         self._create_dataloader()
         self._initialize_model()
+
 
     def _load_data(self):
 
@@ -71,7 +73,8 @@ class Trainer():
         self.train_loader = DataLoader(self.train_dataset, batch_size=self.batch_size, shuffle=True)
 
     def _initialize_model(self):
-        self.model = SimpleNeuralNet(self.hidden_layers)
+        self.model = SimpleNeuralNet(self.neurons_per_layer, self.num_layers)
+        print(self.model)
         # Loss function
         self.criterion = nn.MSELoss()
         # Optimizer
@@ -116,7 +119,7 @@ class Trainer():
         if self.save_image:
             # Save the plot as a PNG file
             function_name = self.data_file_path.split("/")[-1][0:4]
-            plt.savefig(f'images/{function_name}.png', dpi=300)  # You can adjust the dpi (dots per inch) as needed
+            plt.savefig(f'images/{self.image_name}', dpi=300)  # You can adjust the dpi (dots per inch) as needed
 
 
 

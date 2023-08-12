@@ -1,11 +1,13 @@
 {
-
-"seed": 0,
-"data_file_path": "./data/raw/f_01_s_100000.parquet",
-"hidden_layers": 254,
-"learning_rate": 0.0001,
-"batch_size": 1000,
-"num_epochs": 100,
-"save_image": true
-
+    "data_file_path":[
+        "./data/raw/f_03_s_100000.parquet"
+    ],
+    "seed":[42],
+    "neurons_per_layer": [64],
+    "num_layers": [10],
+    "learning_rate": [0.0001],
+    "batch_size": [1000],
+    "num_epochs": [1000],
+    "save_image": [true],
+    "image_name": ["f_3_overfitting_try_1.png"]
 }

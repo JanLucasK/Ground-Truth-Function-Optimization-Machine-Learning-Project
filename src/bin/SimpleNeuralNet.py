@@ -3,19 +3,21 @@ import torch.nn as nn
 
 
 class SimpleNeuralNet(nn.Module):
-    def __init__(self, hidden_layers):
+    def __init__(self, neurons_per_layer, num_layers):
         super(SimpleNeuralNet, self).__init__()
-        self.hidden_layers = hidden_layers
-        self.fc1 = nn.Linear(2, self.hidden_layers)  # 2 input features, 32 hidden units
-        self.fc2 = nn.Linear(self.hidden_layers,self.hidden_layers)
-        self.fc3 = nn.Linear(self.hidden_layers,self.hidden_layers)
-        self.fc4 = nn.Linear(self.hidden_layers,self.hidden_layers)
-        self.fc5 = nn.Linear(self.hidden_layers, 1)  # 32 hidden units, 1 output
 
+        self.neurons_per_layer = neurons_per_layer
+        self.num_layers = num_layers
+        self.fc = []
+        self.fc.append(nn.Linear(2, self.neurons_per_layer))  # 2 input features, 32 hidden units
+        for i in range(0,self.num_layers):
+            self.fc.append(nn.Linear(self.neurons_per_layer, self.neurons_per_layer))
+        self.fc.append(nn.Linear(self.neurons_per_layer, 1))  # 32 hidden units, 1 output
+
+        self.fc = nn.ModuleList(self.fc)
+        
     def forward(self, x):
-        x = torch.relu(self.fc1(x))
-        x = torch.relu(self.fc2(x))
-        x = torch.relu(self.fc3(x))
-        x = torch.relu(self.fc4(x))
-        x = self.fc5(x)
+        for layer in self.fc[:-1]:
+            x = torch.relu(layer(x))
+        x = self.fc[-1](x)
         return x
