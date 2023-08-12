@@ -24,7 +24,6 @@ class Trainer():
             print("GPU is not available, using CPU instead")
 
 
-
         self.data_file_path = data_file_path
         self.seed = seed
         self.neurons_per_layer = neurons_per_layer
@@ -74,7 +73,6 @@ class Trainer():
 
     def _initialize_model(self):
         self.model = SimpleNeuralNet(self.neurons_per_layer, self.num_layers)
-        print(self.model)
         # Loss function
         self.criterion = nn.MSELoss()
         # Optimizer
