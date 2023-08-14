@@ -9,5 +9,8 @@
     "batch_size": [1000],
     "num_epochs": [500,1000,1500],
     "save_image": [true,true,true],
-    "image_name": ["training_v1_f24_1.png","training_v1_f24_2.png","training_v1_f24_3.png"]
+    "image_name": ["training_v1_f24_1.png","training_v1_f24_2.png","training_v1_f24_3.png"],
+    "save_model": [true,true,true],
+    "model_name": ["training_v1_f24_1.pkl","training_v1_f24_2.pkl","training_v1_f24_3.pkl"]
+    
 }

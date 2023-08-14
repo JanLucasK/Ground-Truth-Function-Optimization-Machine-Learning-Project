@@ -14,7 +14,7 @@ from torch.utils.data import DataLoader, TensorDataset
 
 
 class Trainer():
-    def __init__(self, data_file_path, seed, neurons_per_layer, num_layers, learning_rate, batch_size, num_epochs, save_image, image_name):
+    def __init__(self, data_file_path, seed, neurons_per_layer, num_layers, learning_rate, batch_size, num_epochs, save_image, image_name, save_model, model_name):
 
         if torch.cuda.is_available():
             device = torch.device("cuda")
@@ -33,6 +33,8 @@ class Trainer():
         self.num_epochs = num_epochs
         self.save_image = save_image
         self.image_name = image_name
+        self.save_model = save_model
+        self.model_name = model_name
 
         self._load_data()
         self._scale_data()
@@ -144,6 +146,8 @@ class Trainer():
 
             print(f"Epoch {epoch}, Train Loss: {loss.item()}, Test Loss: {test_loss.item()}")
 
+        self._save_model(self.model, self.model_name)
+
     def evaluate_grid(self):
         # Generate the grid of input data
         x_grid, y_grid = np.meshgrid(np.arange(-5, 5.01, 0.01), np.arange(-5, 5.01, 0.01))
@@ -166,4 +170,8 @@ class Trainer():
 
         # Plot the heatmaps
         self._plot_heatmap(x_grid, y_grid, predictions, function_values)
+
+    def _save_model(self, model, file_name):
+        if self.save_model:
+            torch.save(model, f'models/{file_name}')
 

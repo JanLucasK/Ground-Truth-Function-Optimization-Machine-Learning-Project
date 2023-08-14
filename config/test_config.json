@@ -9,5 +9,7 @@
     "batch_size": [100],
     "num_epochs": [10],
     "save_image": [true],
-    "image_name": ["test.png"]
+    "image_name": ["test.png"],
+    "save_model": [true],
+    "model_name": ["test.pth"]
 }

@@ -11,7 +11,7 @@ def open_config(config_file_path):
 
 def main():
 
-    config_file_path = 'config/training_config.json'
+    config_file_path = 'config/training_version_1.json'
     config = open_config(config_file_path)
 
     for i in range(0,len(config["data_file_path"])):
@@ -25,6 +25,8 @@ def main():
             config["num_epochs"][i], 
             config["save_image"][i], 
             config["image_name"][i],
+            config["save_model"][i],
+            config["model_name"][i],
         )
         trainer.train()
         trainer.evaluate_grid()
