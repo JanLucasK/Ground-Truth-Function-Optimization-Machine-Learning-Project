@@ -50,6 +50,7 @@ class Trainer():
         # Extracting features (x and y) and labels (k)
         X = data[['coord_0', 'coord_1']].values
         y = data['f_value'].values
+        
 
         # Split the data into training and testing sets
         self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(X, y, test_size=0.2, random_state=self.seed)
