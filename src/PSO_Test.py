@@ -26,6 +26,11 @@ def pso(cost_function, model, num_particles=50, num_dimensions=2, max_iterations
     global_best_position = particles_position[0].copy()
     global_best_cost = np.inf
     
+    # Store particle trajectories
+    particle_trajectories = [[] for _ in range(num_particles)]
+    for i in range(num_particles):
+        particle_trajectories[i].append(particles_position[i].tolist())
+    
     for iteration in range(max_iterations):
         for i in range(num_particles):
             cost = cost_function(particles_position[i], model)
@@ -38,35 +43,40 @@ def pso(cost_function, model, num_particles=50, num_dimensions=2, max_iterations
                 global_best_cost = cost
                 global_best_position = particles_position[i]
                 
+            # Update trajectories
+            particle_trajectories[i].append(particles_position[i].tolist())
+                
         particles_position, particles_velocity = pso_step(
             particles_position, particles_velocity,
             particles_best_position, global_best_position,
             c1, c2, w
         )
         
-    return global_best_position, global_best_cost
+    return global_best_position, global_best_cost, particle_trajectories
 
 # Load the model
 loaded_model = torch.load('models/training_v1_f01_2.pth')
 loaded_model = loaded_model.eval()
 
 # Start the PSO algorithm
-global_best_position, global_best_cost = pso(cost_function, loaded_model)
+global_best_position, global_best_cost, particle_trajectories = pso(cost_function, loaded_model)
 
 print("Global optimum found at:", global_best_position)
 print("Cost at global optimum:", global_best_cost)
 
-# Plot the function with the found optimum
+# Plot the function with the found optimum and particle trajectories
 x = torch.arange(-5, 5, 0.01, dtype=torch.float32)
 xgrid, ygrid = np.meshgrid(x.numpy(), x.numpy())
-xy = np.vstack([xgrid.ravel(), ygrid.ravel()]).T
-results_grid = np.array([cost_function(point, loaded_model) for point in xy]).reshape(xgrid.shape)
+results_grid = np.reshape([cost_function([x, y], loaded_model) for x, y in zip(xgrid.ravel(), ygrid.ravel())], xgrid.shape)
 
-plt.figure(figsize=(6, 6))
+plt.figure(figsize=(8, 6))
 plt.pcolormesh(xgrid, ygrid, results_grid, cmap='inferno', shading='auto')
+for traj in particle_trajectories:
+    traj = np.array(traj)
+    plt.plot(traj[:, 0], traj[:, 1], marker='', linewidth=1, color='white', alpha=0.5)
 plt.scatter(*global_best_position.tolist(), marker='x', c='r')
 plt.xlabel('X')
 plt.ylabel('Y')
-plt.title('Test Function 01 with PSO-found Optimum')
+plt.title('Test Function 01 with PSO-found Optimum and Trajectories')
 plt.colorbar()
 plt.show()
