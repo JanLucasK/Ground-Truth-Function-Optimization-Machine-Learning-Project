@@ -14,26 +14,22 @@ def open_config(config_file_path):
 def main():
 
     config = open_config("config/training_version_1.json")
-    training = False
-    if training:
-        for i in range(0,len(config["data_file_path"])):
-            trainer = Trainer(
-                config["data_file_path"][i], 
-                config["seed"][i], 
-                config["neurons_per_layer"][i], 
-                config["num_layers"][i], 
-                config["learning_rate"][i], 
-                config["batch_size"][i], 
-                config["num_epochs"][i], 
-                config["save_image"][i], 
-                config["image_name"][i],
-                config["save_model"][i],
-                config["model_name"][i],
-            )
-            trainer.train()
-            trainer.evaluate_grid()     
-    basehop_opt = bh_optimizer(model_path="models/training_v1_f24_3.pth", input_bounds=[(-5.0,5.0), (-5.0,5.0)])
-    result = basehop_opt.optimize(initial_guess = [1,-1])
-    print(result)
+    for i in range(0,len(config["data_file_path"])):
+        trainer = Trainer(
+            config["data_file_path"][i], 
+            config["seed"][i], 
+            config["neurons_per_layer"][i], 
+            config["num_layers"][i], 
+            config["learning_rate"][i], 
+            config["batch_size"][i], 
+            config["num_epochs"][i], 
+            config["save_image"][i], 
+            config["image_name"][i],
+            config["save_model"][i],
+            config["model_name"][i],
+        )
+        trainer.train()
+        trainer.evaluate_grid()     
+   
 if __name__ == "__main__":
     main()

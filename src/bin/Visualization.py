@@ -1,7 +1,6 @@
 import torch
 import numpy as np
 import matplotlib.pyplot as plt
-from sklearn.preprocessing import StandardScaler
 import seaborn as sns
 
 
@@ -9,10 +8,10 @@ class visualization():
     def __init__(self, model, function) -> None:
         self.model = model
         self.function = function
-        self.scaler = StandardScaler()
+        #self.scaler = StandardScaler()
 
     def _get_gt_function(self, x_grid, y_grid):
-        fn = function
+        fn = self.function
         flat_grid = np.column_stack((x_grid.ravel(), y_grid.ravel()))
 
         # Convert flat_grid to a PyTorch Tensor
@@ -29,7 +28,7 @@ class visualization():
 
 
         # Convert the scaled grid data to PyTorch tensor
-        grid_data_tensor = torch.tensor((x_grid, y_grid), dtype=torch.float32)
+        grid_data_tensor = torch.tensor(np.column_stack((x_grid.ravel(), y_grid.ravel())), dtype=torch.float32)
 
         # Set the model to evaluation mode
         self.model.eval()
