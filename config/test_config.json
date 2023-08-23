@@ -1,13 +1,13 @@
 {
     "data_file_path":[
-        "./data/raw/f_01_s_1000.parquet"
+        "./data/raw/f_01_s_10000.parquet"
     ],
     "seed":[42],
     "neurons_per_layer": [64],
     "num_layers": [4],
     "learning_rate": [0.001],
-    "batch_size": [100],
-    "num_epochs": [10],
+    "batch_size": [200],
+    "num_epochs": [100],
     "save_image": [true],
     "image_name": ["test.png"],
     "save_model": [true],

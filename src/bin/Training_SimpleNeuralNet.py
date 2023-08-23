@@ -37,7 +37,7 @@ class Trainer():
         self.model_name = model_name
 
         self._load_data()
-        self._scale_data()
+        # self._scale_data()
         self._data_to_tensors()
         self._create_dataloader()
         self._initialize_model()
@@ -154,10 +154,11 @@ class Trainer():
         x_grid, y_grid = np.meshgrid(np.arange(-5, 5.01, 0.01), np.arange(-5, 5.01, 0.01))
 
         # Scale the grid data using the same StandardScaler
-        grid_data_scaled = self.scaler.transform(np.column_stack((x_grid.ravel(), y_grid.ravel())))
+        # grid_data_scaled = self.scaler.transform(np.column_stack((x_grid.ravel(), y_grid.ravel())))
+        grid_data = np.column_stack((x_grid.ravel(), y_grid.ravel()))
 
         # Convert the scaled grid data to PyTorch tensor
-        grid_data_tensor = torch.tensor(grid_data_scaled, dtype=torch.float32)
+        grid_data_tensor = torch.tensor(grid_data, dtype=torch.float32)
 
         # Set the model to evaluation mode
         self.model.eval()
