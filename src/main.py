@@ -13,7 +13,8 @@ def open_config(config_file_path):
 
 def main():
 
-    config = open_config("config/training_version_1.json")
+    config = open_config("config/test_config.json")
+
     for i in range(0,len(config["data_file_path"])):
         trainer = Trainer(
             config["data_file_path"][i], 
@@ -30,6 +31,7 @@ def main():
         )
         trainer.train()
         trainer.evaluate_grid()     
-   
+
+
 if __name__ == "__main__":
     main()
