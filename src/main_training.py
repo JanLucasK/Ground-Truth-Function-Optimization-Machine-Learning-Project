@@ -13,7 +13,7 @@ def open_config(config_file_path):
 
 def main():
 
-    config = open_config("config/test_config.json")
+    config = open_config("config/training_version_2.json")
 
     for i in range(0,len(config["data_file_path"])):
         trainer = Trainer(

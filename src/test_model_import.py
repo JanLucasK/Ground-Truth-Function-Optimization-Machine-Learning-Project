@@ -46,10 +46,11 @@ def import_model():
     current_directory = os.getcwd()
     print("Current working directory:", current_directory)
 
-    model = torch.load("models/test.pth")
+    model = torch.load("models/training_v1_f24_3.pth")
     model.eval()
     return model
 
 
 
 evaluate_grid(import_model())
+
