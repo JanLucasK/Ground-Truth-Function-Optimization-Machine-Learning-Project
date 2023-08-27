@@ -1,0 +1,33 @@
+2023-08-27 17:03:41,656 - pyswarms.utils.plotters.plotters - ERROR - Please check your input type
+Traceback (most recent call last):
+  File "/home/luka/anaconda3/envs/MLP_Env/lib/python3.9/site-packages/pyswarms/utils/plotters/plotters.py", line 221, in plot_contour
+    (xx, yy, zz) = _mesh(mesher, n_processes=n_processes)
+  File "/home/luka/anaconda3/envs/MLP_Env/lib/python3.9/site-packages/pyswarms/utils/plotters/plotters.py", line 420, in _mesh
+    z = mesher.func(xypairs)
+  File "/home/luka/anaconda3/envs/MLP_Env/lib/python3.9/site-packages/bbobtorch/Problem.py", line 19, in __call__
+    return self._function(x, *self._parameters)
+  File "/home/luka/anaconda3/envs/MLP_Env/lib/python3.9/site-packages/bbobtorch/functions.py", line 18, in _f
+    z = x - x_opt[None, :]
+TypeError: unsupported operand type(s) for -: 'numpy.ndarray' and 'Tensor'
+2023-08-27 17:12:42,009 - pyswarms.utils.plotters.plotters - ERROR - Please check your input type
+Traceback (most recent call last):
+  File "/home/luka/anaconda3/envs/MLP_Env/lib/python3.9/site-packages/pyswarms/utils/plotters/plotters.py", line 221, in plot_contour
+    (xx, yy, zz) = _mesh(mesher, n_processes=n_processes)
+  File "/home/luka/anaconda3/envs/MLP_Env/lib/python3.9/site-packages/pyswarms/utils/plotters/plotters.py", line 420, in _mesh
+    z = mesher.func(xypairs)
+  File "/home/luka/anaconda3/envs/MLP_Env/lib/python3.9/site-packages/bbobtorch/Problem.py", line 19, in __call__
+    return self._function(x, *self._parameters)
+  File "/home/luka/anaconda3/envs/MLP_Env/lib/python3.9/site-packages/bbobtorch/functions.py", line 18, in _f
+    z = x - x_opt[None, :]
+TypeError: unsupported operand type(s) for -: 'numpy.ndarray' and 'Tensor'
+2023-08-27 17:18:40,456 - pyswarms.utils.plotters.plotters - ERROR - Please check your input type
+Traceback (most recent call last):
+  File "/home/luka/anaconda3/envs/MLP_Env/lib/python3.9/site-packages/pyswarms/utils/plotters/plotters.py", line 221, in plot_contour
+    (xx, yy, zz) = _mesh(mesher, n_processes=n_processes)
+  File "/home/luka/anaconda3/envs/MLP_Env/lib/python3.9/site-packages/pyswarms/utils/plotters/plotters.py", line 420, in _mesh
+    z = mesher.func(xypairs)
+  File "/home/luka/anaconda3/envs/MLP_Env/lib/python3.9/site-packages/bbobtorch/Problem.py", line 19, in __call__
+    return self._function(x, *self._parameters)
+  File "/home/luka/anaconda3/envs/MLP_Env/lib/python3.9/site-packages/bbobtorch/functions.py", line 18, in _f
+    z = x - x_opt[None, :]
+TypeError: unsupported operand type(s) for -: 'numpy.ndarray' and 'Tensor'
