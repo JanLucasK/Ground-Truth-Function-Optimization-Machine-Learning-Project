@@ -1,0 +1,48 @@
+{
+    "data_file_path":[
+        "./data/raw/f_01_s_100.parquet",
+        "./data/raw/f_01_s_1000.parquet",
+        "./data/raw/f_01_s_10000.parquet",
+        "./data/raw/f_01_s_100000.parquet",
+        "./data/raw/f_01_s_1000000.parquet",
+        "./data/raw/f_03_s_100.parquet",
+        "./data/raw/f_03_s_1000.parquet",
+        "./data/raw/f_03_s_10000.parquet",
+        "./data/raw/f_03_s_100000.parquet",
+        "./data/raw/f_03_s_1000000.parquet",
+        "./data/raw/f_24_s_100.parquet",
+        "./data/raw/f_24_s_1000.parquet",
+        "./data/raw/f_24_s_10000.parquet",
+        "./data/raw/f_24_s_100000.parquet",
+        "./data/raw/f_24_s_1000000.parquet"
+
+        
+    ],
+    "seed":[42,42,42,42,42,42,42,42,42,42,42,42,42,42,42],
+    "neurons_per_layer": [64,64,64,64,64,64,64,64,64,64,64,64,64,64,64],
+    "num_layers": [6,6,6,6,6,6,6,6,6,6,6,6,6,6,6],
+    "learning_rate": [0.001,0.0008,0.0006,0.0004,0.0002,0.001,0.0008,0.0006,0.0004,0.0002,0.001,0.0008,0.0006,0.0004,0.0002],
+    "batch_size": [1,10,100,1000,10000,1,10,100,1000,10000,1,10,100,1000,10000],
+    "num_epochs": [200,200,200,200,200,200,200,200,200,200,200,200,200,200,200],
+    "save_image": [
+        true,true,true,true,true,
+        true,true,true,true,true,
+        true,true,true,true,true
+    ],
+    "image_name": [
+        "training_v3_f01_1.png","training_v3_f01_2.png","training_v3_f01_3.png","training_v3_f01_4.png","training_v3_f01_5.png",
+        "training_v3_f03_1.png","training_v3_f03_2.png","training_v3_f03_3.png","training_v3_f03_4.png","training_v3_f03_5.png",
+        "training_v3_f24_1.png","training_v3_f24_2.png","training_v3_f24_3.png","training_v3_f24_4.png","training_v3_f24_5.png"
+    ],
+    "save_model": [
+    true,true,true,true,true,
+    true,true,true,true,true,
+    true,true,true,true,true
+    ],
+    "model_name": [
+        "training_v3_f01_1.pth","training_v3_f01_2.pth","training_v3_f01_3.pth","training_v3_f01_4.pth","training_v3_f01_5.pth",
+        "training_v3_f03_1.pth","training_v3_f03_2.pth","training_v3_f03_3.pth","training_v3_f03_4.pth","training_v3_f03_5.pth",
+        "training_v3_f24_1.pth","training_v3_f24_2.pth","training_v3_f24_3.pth","training_v3_f24_4.pth","training_v3_f24_5.pth"
+    ]
+
+}
