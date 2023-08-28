@@ -69,34 +69,28 @@ class PSO_optimizer():
 
         fig, axes = plt.subplots(1, 2, figsize=(16, 8))
 
-        def animate(frame):
-            axes[0].clear()
-            axes[1].clear()
+        ax1 = axes[0]  # Define ax1 for the left plot
+        ax2 = axes[1]  # Define ax2 for the right plot
 
-            ax1 = axes[0]
-            ax2 = axes[1]
+        for ax, path in zip([ax1, ax2], [path_model, path_bbob]):
+            ax.contourf(x_grid, y_grid, predictions, levels=100, cmap='viridis')
+            ax.contourf(x_grid, y_grid, function_values, levels=100, cmap='viridis')
 
-            ax1.contourf(x_grid, y_grid, predictions, levels=100, cmap='viridis')
-            ax2.contourf(x_grid, y_grid, function_values, levels=100, cmap='viridis')
+            for j in range(0, len(path), num_particles):
+                best_particle = path[j:j+num_particles][np.argmin(path[j:j+num_particles][:, 2])]
+                ax.scatter(path[j:j+num_particles, 0], path[j:j+num_particles, 1], c='red', s=10, marker='o', alpha=0.5)
+                ax.scatter(best_particle[0], best_particle[1], c='green', s=100, marker='o')  # Mark gBest with a cross
 
-            for i, (ax, path) in enumerate(zip([ax1, ax2], [path_model, path_bbob])):
-                start = frame * num_particles
-                end = start + num_particles
+            if ax is ax1:  # Plot result for the left subplot
+                ax.scatter(x=result_model[0], y=result_model[1], c='black', s=250, marker='x')
+            else:  # Plot result for the right subplot
+                ax.scatter(x=result_bbob[0], y=result_bbob[1], c='black', s=250, marker='x')
 
-                ax.scatter(path[start:end, 0], path[start:end, 1], c='red', s=10, marker='o', alpha=0.5)
-
-                axes[0].scatter(x=result_model[0], y=result_model[1], c='black', s=250, marker='x')
-                axes[1].scatter(x=result_bbob[0], y=result_bbob[1], c='black', s=250, marker='x')
-
-        anim = animation.FuncAnimation(fig, animate, frames=len(path_model) // num_particles, interval=200, repeat=False)
-
-        # Save the animation
-        anim_filename = "/home/luka/Documents/Test_01_pso_animation.gif"  # Specify the filename
-        anim.save(anim_filename, writer='pillow', fps=2, dpi=150)
-
+        plt.tight_layout()
+        plt.savefig('swarm_iterations.png')  # Save the plot as a PNG image
         plt.show()
         return plt
-    
+
 # call Bbob for minimization
     def call_bbob(self, x):
         if self.input_bounds:

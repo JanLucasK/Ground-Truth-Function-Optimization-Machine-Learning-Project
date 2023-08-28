@@ -118,7 +118,7 @@ model_path = 'models/training_v1_f01_2.pth'
 input_bounds = input_bounds=[(-5.0,5.0), (-5.0,5.0)]
 
 optimizer = PSO_optimizer(model_path, input_bounds)
-initial_guess = [0.0, 0.0]  # Change this to your desired initial guess
+initial_guess = [0.0, 0.0] 
 niter = 100  # Number of iterations
 
 result_nn, result_bbob, fig = optimizer.optimize(initial_guess, niter)
