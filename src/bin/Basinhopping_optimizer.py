@@ -12,15 +12,9 @@ from scipy.optimize import basinhopping
 
 
 class Basinhopping_optimizer():
-    def __init__(self, model_path, input_bounds=None) -> None:   
-        self.model = self.load_model(model_path)
+    def __init__(self, input_bounds=None) -> None:   
         self.input_bounds = input_bounds
-        self.model.eval()
-        self.bbob = bbobtorch.create_f24(2, seed=42)
-        self.bbob_path = pd.DataFrame(columns=["x1", "x2", "y"])
-        self.model_path = pd.DataFrame(columns=["x1", "x2", "y"])
-        self.path = []
-   
+
     def load_model(self, path):
        return torch.load(path)
    
@@ -34,6 +28,7 @@ class Basinhopping_optimizer():
                     penalty += 1e5  # Adjust the penalty value based on your specific needs 
         
         x_tensor = torch.tensor(x, dtype=torch.float32).unsqueeze(0)  # unsqueeze to add batch dimension
+        x_tensor = x_tensor.view(1, -1) 
         y = self.model(x_tensor)
         y_scalar = torch.sum(y).item() + penalty
         
@@ -42,11 +37,26 @@ class Basinhopping_optimizer():
         self.model_path.loc[len(self.model_path)] = model_point
         return y_scalar
     
-    def optimize(self, initial_guess, niter=100, T=100, stepsize=0.1):
-        result_nn = basinhopping(self.call_nn, initial_guess, niter=niter, T=T, stepsize=stepsize, callback=self.callback)
+    def optimize(self, model_path,  function="f_01", initial_guess=[0,0], niter=100, T=100, stepsize=0.1,  image_name = "Default", save_image=False, seed = 42):
+        self.model = self.load_model(model_path)
+        self.model.eval()
+        if function == "f_01":
+            self.bbob = bbobtorch.create_f01(2, seed=42)
+        elif function=="f_03":
+            self.bbob = bbobtorch.create_f03(2, seed=42)
+        else:
+            self.bbob = bbobtorch.create_f24(2, seed=42)
+            
+        self.bbob_path = pd.DataFrame(columns=["x1", "x2", "y"])
+        self.model_path = pd.DataFrame(columns=["x1", "x2", "y"])
+        self.path = []
+        
+        self.save_image = save_image
+        self.image_name = image_name
+        result_nn = basinhopping(self.call_nn, initial_guess, niter=niter, T=T, stepsize=stepsize, seed=seed, callback=self.callback)
         model_path = np.array(self.path)
         self.path= []
-        result_bbob = basinhopping(self.call_bbob, initial_guess, niter=niter, T=T, stepsize=stepsize, callback=self.callback)
+        result_bbob = basinhopping(self.call_bbob, initial_guess, niter=niter, T=T, stepsize=stepsize, seed=seed, callback=self.callback)
         bbob_path = np.array(self.path)
         #self.visualize(result_nn, result_bbob)
         fig = self.visualize_paths(bbob_path, model_path, result_bbob, result_nn)
@@ -77,9 +87,13 @@ class Basinhopping_optimizer():
 
             ax.plot(path[:,0], path[:,1], '-ro', markersize=1, linewidth=0.5)
             
-            ax.scatter(x= result['x'][0], y= result['x'][1], c='black', s= 250, marker='x')
+            ax.scatter(x= result['x'][0], y= result['x'][1], c='black', s= 150, marker='x')
             
-        plt.show(block='True')
+    
+        if self.save_image:
+            # Save the plot as a PNG file
+            plt.savefig(f'images/basinhopping/{self.image_name}', dpi=300)  # You can adjust the dpi (dots per inch) as needed
+        #plt.show()
         return plt
     
     
@@ -91,7 +105,9 @@ class Basinhopping_optimizer():
                 if val < min_val or val > max_val:
                     penalty += 1e5  # Adjust the penalty value based on your specific needs
         
-        x_tensor = torch.tensor(x, dtype=torch.float32)
+        x_tensor = torch.tensor([x], dtype=torch.float32)
+        x_tensor = x_tensor.view(1, -1) 
+        #print(self.bbob.dim, x_tensor)
         y = self.bbob(x_tensor)
         y_scalar = torch.sum(y).item() + penalty
         
@@ -114,5 +130,5 @@ class Basinhopping_optimizer():
         results = fn(flat_grid_tensor)
 
         return results.numpy().reshape(x_grid.shape) 
-    
-    
+
+        
