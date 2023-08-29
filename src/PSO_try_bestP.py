@@ -69,8 +69,8 @@ class PSO_optimizer():
 
         fig, axes = plt.subplots(1, 2, figsize=(16, 8))
 
-        ax1 = axes[0]  # Define ax1 for the left plot
-        ax2 = axes[1]  # Define ax2 for the right plot
+        ax1 = axes[0]  # Define ax1 for the left plot prediction
+        ax2 = axes[1]  # Define ax2 for the right plot bbob
 
         ax1.contourf(x_grid, y_grid, predictions, levels=100, cmap='viridis')
         ax2.contourf(x_grid, y_grid, function_values_bbob, levels=100, cmap='viridis')
