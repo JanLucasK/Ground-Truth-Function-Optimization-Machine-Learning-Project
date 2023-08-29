@@ -79,7 +79,7 @@ class PSO_optimizer():
         best_bbob_positions = np.array(best_positions_bbob)
 
         ax1.scatter(best_model_positions[:, 0], best_model_positions[:, 1], c='red', s=100, marker='o', alpha=0.5)
-        ax2.scatter(best_bbob_positions[:, 0], best_bbob_positions[:, 1], c='blue', s=100, marker='o', alpha=0.5)
+        ax2.scatter(best_bbob_positions[:, 0], best_bbob_positions[:, 1], c='red', s=100, marker='o', alpha=0.5)
 
         for i in range(1, len(best_model_positions)):
             ax1.plot([best_model_positions[i-1, 0], best_model_positions[i, 0]],
@@ -87,7 +87,7 @@ class PSO_optimizer():
 
         for i in range(1, len(best_bbob_positions)):
             ax2.plot([best_bbob_positions[i-1, 0], best_bbob_positions[i, 0]],
-                     [best_bbob_positions[i-1, 1], best_bbob_positions[i, 1]], c='blue')
+                     [best_bbob_positions[i-1, 1], best_bbob_positions[i, 1]], c='red')
 
         ax1.set_title('Best Particle Trajectory (Model)')
         ax2.set_title('Best Particle Trajectory (BBOB)')

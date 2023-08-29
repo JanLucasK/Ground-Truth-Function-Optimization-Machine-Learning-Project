@@ -314,7 +314,6 @@ dependencies:
   - python-lsp-server=1.2.4=pyhd3eb1b0_0
   - python-slugify=5.0.2=pyhd3eb1b0_0
   - python-snappy=0.6.0=py39h2531618_3
-  - pytorch=1.12.1=py3.9_cuda11.3_cudnn8.3.2_0
   - pytorch-mutex=1.0=cuda
   - pytz=2021.3=pyhd3eb1b0_0
   - pyviz_comms=2.0.2=pyhd3eb1b0_0
@@ -428,32 +427,34 @@ dependencies:
   - zope.interface=5.4.0=py39h7f8727e_0
   - zstd=1.4.9=haebb681_0
   - pip:
-    - bbobtorch==1.0.1
-    - cmake==3.27.0
-    - condacolab==0.1.6
-    - cramjam==2.6.2
-    - fastparquet==2023.7.0
-    - jax==0.3.25
-    - jaxlib==0.3.25
-    - lit==16.0.6
-    - ml-dtypes==0.2.0
-    - numpy==1.22.4
-    - numpyro==0.10.1
-    - nvidia-cublas-cu11==11.10.3.66
-    - nvidia-cuda-cupti-cu11==11.7.101
-    - nvidia-cuda-nvrtc-cu11==11.7.99
-    - nvidia-cuda-runtime-cu11==11.7.99
-    - nvidia-cudnn-cu11==8.5.0.96
-    - nvidia-cufft-cu11==10.9.0.58
-    - nvidia-curand-cu11==10.2.10.91
-    - nvidia-cusolver-cu11==11.4.0.1
-    - nvidia-cusparse-cu11==11.7.4.91
-    - nvidia-nccl-cu11==2.14.3
-    - nvidia-nvtx-cu11==11.7.91
-    - opt-einsum==3.3.0
-    - pandas==2.0.3
-    - pyarrow==12.0.1
-    - torch==2.0.1
-    - triton==2.0.0
-    - tzdata==2023.3
-prefix: /home/fabi/anaconda3/envs/MLP_Env
+      - bbobtorch==1.0.1
+      - cmake==3.27.0
+      - condacolab==0.1.6
+      - cramjam==2.6.2
+      - fastparquet==2023.7.0
+      - jax==0.3.25
+      - jaxlib==0.3.25
+      - lit==16.0.6
+      - ml-dtypes==0.2.0
+      - numpy==1.22.4
+      - numpyro==0.10.1
+      - nvidia-cublas-cu11==11.10.3.66
+      - nvidia-cuda-cupti-cu11==11.7.101
+      - nvidia-cuda-nvrtc-cu11==11.7.99
+      - nvidia-cuda-runtime-cu11==11.7.99
+      - nvidia-cudnn-cu11==8.5.0.96
+      - nvidia-cufft-cu11==10.9.0.58
+      - nvidia-curand-cu11==10.2.10.91
+      - nvidia-cusolver-cu11==11.4.0.1
+      - nvidia-cusparse-cu11==11.7.4.91
+      - nvidia-nccl-cu11==2.14.3
+      - nvidia-nvtx-cu11==11.7.91
+      - opt-einsum==3.3.0
+      - pandas==2.0.3
+      - pyarrow==12.0.1
+      - pyswarm==0.6
+      - pyswarms==1.3.0
+      - torch==2.0.1
+      - triton==2.0.0
+      - tzdata==2023.3
+prefix: /home/luka/anaconda3/envs/MLP_Env

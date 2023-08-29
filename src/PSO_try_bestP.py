@@ -12,7 +12,7 @@ class PSO_optimizer():
         self.model = self.load_model(model_path)
         self.input_bounds = input_bounds
         self.model.eval()
-        self.bbob = bbobtorch.create_f01(2, seed=42)
+        self.bbob = bbobtorch.create_f24(2, seed=42)
         self.bbob_path = pd.DataFrame(columns=["x1", "x2", "y"])
         self.model_path = pd.DataFrame(columns=["x1", "x2", "y"])
         self.path = []
@@ -65,17 +65,17 @@ class PSO_optimizer():
         with torch.no_grad():
             predictions = self.model(grid_data_tensor).numpy().reshape(x_grid.shape)
 
-        function_values = self._get_gt_function(x_grid, y_grid)
+        function_values_bbob = self._get_gt_function(x_grid, y_grid)
 
         fig, axes = plt.subplots(1, 2, figsize=(16, 8))
 
         ax1 = axes[0]  # Define ax1 for the left plot
         ax2 = axes[1]  # Define ax2 for the right plot
 
-        for ax, path in zip([ax1, ax2], [path_model, path_bbob]):
-            ax.contourf(x_grid, y_grid, predictions, levels=100, cmap='viridis')
-            ax.contourf(x_grid, y_grid, function_values, levels=100, cmap='viridis')
+        ax1.contourf(x_grid, y_grid, predictions, levels=100, cmap='viridis')
+        ax2.contourf(x_grid, y_grid, function_values_bbob, levels=100, cmap='viridis')
 
+        for ax, path in zip([ax1, ax2], [path_model, path_bbob]):
             for j in range(0, len(path), num_particles):
                 best_particle = path[j:j+num_particles][np.argmin(path[j:j+num_particles][:, 2])]
                 ax.scatter(path[j:j+num_particles, 0], path[j:j+num_particles, 1], c='red', s=10, marker='o', alpha=0.5)
@@ -86,8 +86,11 @@ class PSO_optimizer():
             else:  # Plot result for the right subplot
                 ax.scatter(x=result_bbob[0], y=result_bbob[1], c='black', s=250, marker='x')
 
+        ax1.set_title("Model Predictions")
+        ax2.set_title("BBOB Function")
+
         plt.tight_layout()
-        plt.savefig('swarm_iterations.png')  # Save the plot as a PNG image
+        plt.savefig('24_swarm_iterations.png')  # Save the plot as a PNG image
         plt.show()
         return plt
 
@@ -98,7 +101,7 @@ class PSO_optimizer():
             for val, (min_val, max_val) in zip(x, self.input_bounds):
                 if val < min_val or val > max_val:
                     penalty += 1e5  # Adjust the penalty value based on your specific needs
-        
+
         x_tensor = torch.tensor(x, dtype=torch.float32)
         y = self.bbob(x_tensor)
         y_scalar = torch.sum(y).item() + penalty
@@ -124,7 +127,7 @@ class PSO_optimizer():
         return results.numpy().reshape(x_grid.shape) 
     
 # Create an instance of the PSO_optimizer class and run the optimization
-model_path = 'models/v2/training_v2_f01_3.pth'
+model_path = 'models/v1/training_v1_f24_3.pth'
 input_bounds = input_bounds=[(-5.0, 5.0), (-5.0, 5.0)]
 
 optimizer = PSO_optimizer(model_path, input_bounds)
