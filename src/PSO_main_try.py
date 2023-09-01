@@ -6,12 +6,15 @@ def main():
     swarmsize = 50  # Number of particles each swarm
     niter=20 # Number of iterations
 
+    # List of optimization tasks with model paths
     models = [
         ["f_01", "models/v3/training_v3_f01_4.pth"],
         ["f_03","models/v3/training_v3_f03_5.pth"],
         ["f_24", "models/v3/training_v3_f24_4.pth"]
         ]
     pso_opt = PSO_optimizer(input_bounds=input_bounds)
+    
+    # Iterate over different optimization tasks
     for model in models:
         seed = 0
         for _ in range(3):
@@ -23,9 +26,12 @@ def main():
             print(model[0]+"_"+str(seed))
             print(result_nn)
             print(result_bbob)
-            #distance = basehop_opt.calc_distance(point_a=result_nn.x, point_b=result_bbob.x)
+            
+            # Calculate the distance between the two optimization results using Euclidean norm
             distance = np.linalg.norm(result_nn-result_bbob) 
             print(distance)
+            
+            # Write the task name to the results file
             with open('pso_results_50SwarmSize.txt', "a") as f:
                 f.write(f"{name}")
                 f.write(f"\n")
