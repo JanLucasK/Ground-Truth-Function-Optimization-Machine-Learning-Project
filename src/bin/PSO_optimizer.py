@@ -12,6 +12,10 @@ class PSO_optimizer():
         self.input_bounds = input_bounds
         self.swarmsize = swarmsize
         self.particle_history = []
+        self.bbob_path = pd.DataFrame(columns=["x1", "x2", "y"])
+        self.model_path = pd.DataFrame(columns=["x1", "x2", "y"])
+        self.path = []
+
    
     def load_model(self, path):
        return torch.load(path)
@@ -44,20 +48,22 @@ class PSO_optimizer():
         else:
             self.bbob = bbobtorch.create_f24(2, seed=42)
         
-        self.bbob_path = pd.DataFrame(columns=["x1", "x2", "y"])
-        self.model_path = pd.DataFrame(columns=["x1", "x2", "y"])
-        self.path = []
+        # self.bbob_path = pd.DataFrame(columns=["x1", "x2", "y"])
+        # self.model_path = pd.DataFrame(columns=["x1", "x2", "y"])
+        # self.path = []
 
         self.save_image = save_image
         self.image_name = image_name
 
         # Use PSO optimizer
         result_nn, _ = pso(self.call_nn, swarmsize=swarmsize, maxiter=niter, minstep=1e-5, lb = [-5,-5], ub=[5,5])
+        result_bbob, _ = pso(self.call_bbob, swarmsize=swarmsize, maxiter=niter, minstep=1e-5, lb = [-5,-5], ub=[5,5])
+        
         model_path = np.array(self.path)
         self.path = []
 
-        result_bbob, _ = pso(self.call_bbob, swarmsize=swarmsize, maxiter=niter, minstep=1e-5, lb = [-5,-5], ub=[5,5])
-        bbob_path = np.array(self.path)
+        # result_bbob, _ = pso(self.call_bbob, swarmsize=swarmsize, maxiter=niter, minstep=1e-5, lb = [-5,-5], ub=[5,5])
+        #bbob_path = np.array(self.path)
         
         # fig = self.visualize_paths(result_bbob, result_nn)
         fig = self.visualize_paths(self.bbob_path, self.model_path, result_bbob, result_nn, swarmsize)
@@ -89,24 +95,32 @@ class PSO_optimizer():
         ax2.contourf(x_grid, y_grid, function_values_bbob, levels=100, cmap='viridis')
 
         for ax, path in zip([ax1, ax2], [path_model, path_bbob]):
+            best_particles = []  # Zurücksetzen der Liste am Anfang jeder Iteration
             for j in range(0, len(path), swarmsize):
-                best_particle = path[j:j+swarmsize][np.argmin(path[j:j+swarmsize][:, 2])]
-                ax.scatter(path[j:j+swarmsize, 0], path[j:j+swarmsize, 1], c='red', s=10, marker='o', alpha=0.5)
-                ax.scatter(best_particle[0], best_particle[1], c='green', s=100, marker='o')  # Mark gBest with a cross
+                swarm = path[j:j+swarmsize]
+                best_particle = swarm.loc[swarm['y'].idxmin()]
+                best_particles.append(best_particle)
 
-            if ax is ax1:  # Plot result for the left subplot
+                ax.scatter(swarm['x1'], swarm['x2'], c='red', s=10, marker='o', alpha=0.5)
+
+            best_particles = pd.concat(best_particles)
+            ax.scatter(best_particles['x1'], best_particles['x2'], c='green', s=100, marker='o')
+
+            if ax is ax1:
                 ax.scatter(x=result_model[0], y=result_model[1], c='black', s=250, marker='x')
-            else:  # Plot result for the right subplot
+            else:
                 ax.scatter(x=result_bbob[0], y=result_bbob[1], c='black', s=250, marker='x')
-
+             
         ax1.set_title("Model Predictions")
         ax2.set_title("BBOB Function")
 
         plt.tight_layout()
         if self.save_image:
-            plt.savefig('24_swarm_iterations.png')  # Save the plot as a PNG image
+            plt.savefig(f'images/PSO/50_SwarmSize/{self.image_name}', dpi=300)  # Save the plot as a PNG image
         
-        plt.show()
+        # plt.show()
+        self.model_path = pd.DataFrame(columns=["x1", "x2", "y"])  # Zurücksetzen der Daten
+        self.bbob_path = pd.DataFrame(columns=["x1", "x2", "y"])  # Zurücksetzen der Daten
         return plt
     
 # call Bbob for minimization
@@ -129,6 +143,8 @@ class PSO_optimizer():
     
     def callback(self, x, f, accept):
         self.path.append(x)
+        #point = [x[0], x[1], f]
+        #self.path.append(point)
     
     def _get_gt_function(self, x_grid, y_grid):
         fn = self.bbob

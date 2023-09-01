@@ -21,15 +21,15 @@ def main():
                                                                niter=niter, seed= seed, 
                                                                save_image=True, image_name=name)
             print(model[0]+"_"+str(seed))
-            print(result_nn.x)
-            print(result_bbob.x)
+            print(result_nn)
+            print(result_bbob)
             #distance = basehop_opt.calc_distance(point_a=result_nn.x, point_b=result_bbob.x)
-            distance = np.linalg.norm(result_nn.x-result_bbob.x) 
+            distance = np.linalg.norm(result_nn-result_bbob) 
             print(distance)
-            with open('pso_results.txt', "a") as f:
+            with open('pso_results_50SwarmSize.txt', "a") as f:
                 f.write(f"{name}")
                 f.write(f"\n")
-                f.write(f"neural-net optium: {result_nn.x}, ground-thruth optimum: {result_bbob.x}")
+                f.write(f"neural-net optium: {result_nn}, ground-thruth optimum: {result_bbob}")
                 f.write(f"\n")
                 f.write(f"distance: {distance}")
                 f.write(f"\n")
@@ -38,3 +38,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
