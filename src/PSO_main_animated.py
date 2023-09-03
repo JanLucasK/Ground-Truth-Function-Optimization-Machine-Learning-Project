@@ -16,7 +16,7 @@ def main():
     
     # Iterate over different optimization tasks
     for model in models:
-        seed = 0
+        seed = 3
         for _ in range(4):
             name = f"{model[0]}_{seed}.gif"  # Dynamically generate the image name with .gif extension
             np.random.seed(seed)
@@ -28,7 +28,7 @@ def main():
             print(result_nn)
             print(result_bbob)
 
-            seed+=1
+            # seed+=1
             
 if __name__ == "__main__":
     main()

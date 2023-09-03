@@ -4,7 +4,7 @@ import numpy as np
 def main():
     input_bounds=[(-5.0,5.0), (-5.0,5.0)]
     swarmsize = 50  # Number of particles each swarm
-    niter=20 # Number of iterations
+    niter=100 # Number of iterations
 
     # List of optimization tasks with model paths
     models = [
@@ -33,7 +33,7 @@ def main():
             print(distance)
             
             # Write the task name to the results file
-            with open('opt_results/pso_results_50SwarmSize_v3_5.txt', "a") as f:
+            with open('opt_results/pso_results_50SwarmSize_v3_5_100niter.txt', "a") as f:
                 f.write(f"{name}")
                 f.write(f"\n")
                 f.write(f"neural-net optium: {result_nn}, ground-thruth optimum: {result_bbob}")
