@@ -108,12 +108,12 @@ def plot_scatterplots(df):
         ax.legend()
 
     plt.tight_layout()
-    plt.savefig('compare_opt_distance.png')
+    plt.savefig('images/compare_opt_Results/compare_opt_distance_v3_5.png')
     plt.show()
 
 if __name__ == "__main__":
     # List of file names
-    file_names = ['pso_results_50SwarmSize.txt', 'basin_results.txt']
+    file_names = ['opt_results/pso_results_50SwarmSize_v3_5.txt', 'opt_results/basin_results.txt']
     
     all_data = read_data_from_files(file_names)
     df = create_combined_dataframe(all_data)

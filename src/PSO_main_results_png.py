@@ -8,16 +8,16 @@ def main():
 
     # List of optimization tasks with model paths
     models = [
-        ["f_01", "models/v3/training_v3_f01_4.pth"],
+        ["f_01", "models/v3/training_v3_f01_5.pth"],
         ["f_03","models/v3/training_v3_f03_5.pth"],
-        ["f_24", "models/v3/training_v3_f24_4.pth"]
+        ["f_24", "models/v3/training_v3_f24_5.pth"]
         ]
     pso_opt = PSO_optimizer(input_bounds=input_bounds)
     
     # Iterate over different optimization tasks
     for model in models:
         seed = 0
-        for _ in range(3):
+        for _ in range(4):
             name = model[0]+"_"+str(seed)
             result_nn, result_bbob, fig = pso_opt.optimize(model_path= model[1], function =model[0],  
                                                                swarmsize=swarmsize, 
@@ -32,7 +32,7 @@ def main():
             print(distance)
             
             # Write the task name to the results file
-            with open('pso_results_50SwarmSize.txt', "a") as f:
+            with open('opt_results/pso_results_50SwarmSize_v3_5.txt', "a") as f:
                 f.write(f"{name}")
                 f.write(f"\n")
                 f.write(f"neural-net optium: {result_nn}, ground-thruth optimum: {result_bbob}")

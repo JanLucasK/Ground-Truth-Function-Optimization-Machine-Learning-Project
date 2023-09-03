@@ -109,7 +109,7 @@ class PSO_optimizer():
 
         # Save the animation
         if self.save_image:
-            anim_filename = f'images/PSO/Animated_Gifs/{self.image_name}'  # Specify the filename
+            anim_filename = f'images/PSO/50_SwarmSize_v3_5/Animated_Gifs/{self.image_name}'  # Specify the filename
             anim.save(anim_filename, writer='pillow', fps=1, dpi=300)
 
         # plt.show()
