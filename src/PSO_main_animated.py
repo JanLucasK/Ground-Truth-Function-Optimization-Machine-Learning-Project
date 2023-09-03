@@ -19,6 +19,7 @@ def main():
         seed = 0
         for _ in range(4):
             name = f"{model[0]}_{seed}.gif"  # Dynamically generate the image name with .gif extension
+            np.random.seed(seed)
             result_nn, result_bbob, fig = pso_opt.optimize(model_path= model[1], function =model[0],  
                                                                swarmsize=swarmsize, 
                                                                niter=niter, seed= seed, 

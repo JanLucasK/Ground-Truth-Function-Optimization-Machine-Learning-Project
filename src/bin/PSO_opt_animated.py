@@ -151,4 +151,3 @@ class PSO_optimizer():
         results = fn(flat_grid_tensor)
 
         return results.numpy().reshape(x_grid.shape) 
-

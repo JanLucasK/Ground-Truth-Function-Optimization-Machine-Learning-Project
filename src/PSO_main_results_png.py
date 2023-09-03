@@ -19,6 +19,7 @@ def main():
         seed = 0
         for _ in range(4):
             name = model[0]+"_"+str(seed)
+            np.random.seed(seed)
             result_nn, result_bbob, fig = pso_opt.optimize(model_path= model[1], function =model[0],  
                                                                swarmsize=swarmsize, 
                                                                niter=niter, seed= seed, 
