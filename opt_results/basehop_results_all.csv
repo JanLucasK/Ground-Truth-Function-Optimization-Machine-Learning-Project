@@ -1,0 +1,8 @@
+Path,Version,Function,Size,Seed,Neural_net_optimum,Ground_truth_optimum,Distance,Optimizer
+models/v1/training_v1_f01_1.pth,v1,f_01,100,0,[-3.127362   -0.74022502],[-1.09953118  0.41187654],2.33226,basinhop
+models/v1/training_v1_f01_1.pth,v1,f_01,100,1,[-4.11829093  4.96789528],[-1.95942509  1.60086524],3.9997,basinhop
+models/v1/training_v1_f01_1.pth,v1,f_01,100,2,[-1.63908391 -4.98918885],[-0.12868271 -1.56370597],3.74369,basinhop
+models/v1/training_v1_f01_1.pth,v1,f_01,100,3,[-2.06025158 -4.99773515],[ 0.63566148 -1.52258357],4.39825,basinhop
+models/v1/training_v1_f24_2.pth,v1,f_24,1000,0,[ 1.87227265 -1.83063086],[-1.09953118  0.41187654],3.72296,basinhop
+models/v1/training_v1_f24_2.pth,v1,f_24,1000,1,[-2.2292645   4.96893322],[-1.95942509  1.60086524],3.37886,basinhop
+models/v1/training_v1_f24_2.pth,v1,f_24,1000,2,[ 1.47495871 -1.95564361],[-0.12868271 -1.56370597],1.65084,basinhop

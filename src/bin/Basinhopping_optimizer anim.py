@@ -61,7 +61,7 @@ class Basinhopping_optimizer():
         #self.visualize(result_nn, result_bbob)
         fig = self.visualize_paths(bbob_path, model_path, result_bbob, result_nn)
 
-        return result_nn, result_bbob
+        return result_nn, result_bbob, fig
     
     def visualize_paths(self, path_bbob, path_model, result_bbob, result_model):
         x_grid, y_grid = np.meshgrid(np.arange(-5, 5.01, 0.01), np.arange(-5, 5.01, 0.01))
