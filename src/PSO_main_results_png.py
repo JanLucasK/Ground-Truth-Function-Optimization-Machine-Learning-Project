@@ -4,13 +4,14 @@ import numpy as np
 def main():
     input_bounds=[(-5.0,5.0), (-5.0,5.0)]
     swarmsize = 50  # Number of particles each swarm
-    niter=100 # Number of iterations
+    niter=20 # Number of iterations
 
     # List of optimization tasks with model paths
     models = [
         ["f_01", "models/v3/training_v3_f01_5.pth"],
         ["f_03","models/v3/training_v3_f03_5.pth"],
         ["f_24", "models/v3/training_v3_f24_5.pth"]
+        # ['f_03', 'models/training_v5_f03_3.pth']
         ]
     pso_opt = PSO_optimizer(input_bounds=input_bounds)
     
@@ -33,7 +34,7 @@ def main():
             print(distance)
             
             # Write the task name to the results file
-            with open('opt_results/pso_results_50SwarmSize_v3_5_100niter.txt', "a") as f:
+            with open('opt_results/pso_results_50SwarmSize_v3_5_20niter.txt', "a") as f:
                 f.write(f"{name}")
                 f.write(f"\n")
                 f.write(f"neural-net optium: {result_nn}, ground-thruth optimum: {result_bbob}")
