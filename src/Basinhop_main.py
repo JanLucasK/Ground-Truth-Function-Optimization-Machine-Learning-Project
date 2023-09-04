@@ -6,15 +6,20 @@ def main():
     step_size = 0.5
     temp=100
     models = [
-        ["f_01", "models/v3/training_v3_f01_4.pth"],
-        ["f_03","models/training_v4_f03_5.pth"],
-        ["f_24", "models/training_v4_f24_4.pth"]
+        ["f_01", "models/v3/training_v3_f01_5.pth"],
+        ["f_03","models/v3/training_v3_f03_5.pth"],
+        ["f_24", "models/v3/training_v3_f24_5.pth"],
+        ["f_01_small", "models/v3/training_v3_f01_1.pth"],
+        ["f_03_small","models/v3/training_v3_f03_1.pth"],
+        ["f_24_small", "models/v3/training_v3_f24_1.pth"]
         ]
+    
     basehop_opt = bh_optimizer(input_bounds=[(-5.0,5.0), (-5.0,5.0)])
     for model in models:
         seed = 0
-        for _ in range(3):
-            name = model[0]+"_"+str(seed)
+        for _ in range(4):
+            #name = model[0]+"_"+str(seed)
+            name = f"{model[0]}_{seed}"  
             result_nn, result_bbob, fig = basehop_opt.optimize(model_path= model[1], function =model[0], initial_guess = start, 
                                                                stepsize=step_size, T=temp, seed= seed, 
                                                                save_image=True, image_name=name)
@@ -24,7 +29,7 @@ def main():
             #distance = basehop_opt.calc_distance(point_a=result_nn.x, point_b=result_bbob.x)
             distance = np.linalg.norm(result_nn.x-result_bbob.x)
             print(distance)
-            with open('basin_results.txt', "a") as f:
+            with open('opt_results/basin_results.txt', "a") as f:
                 f.write(f"{name}")
                 f.write(f"\n")
                 f.write(f"neural-net optium: {result_nn.x}, ground-thruth optimum: {result_bbob.x}")
