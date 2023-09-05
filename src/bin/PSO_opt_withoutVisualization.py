@@ -42,7 +42,7 @@ class PSO_optimizer():
         self.model_path.loc[len(self.model_path)] = model_point # Add point to the model path
         return y_scalar
     
-    def optimize(self, model_path, function='f_01', niter=100, swarmsize=50, image_name = "Default", save_image=False, seed=42):
+    def optimize(self, model_path, function='f_01', niter=20, swarmsize=50, image_name = "Default", save_image=False, seed=42):
         self.model = self.load_model(model_path)
         self.model.eval()
         # Create bbob functions
