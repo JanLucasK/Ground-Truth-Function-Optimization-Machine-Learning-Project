@@ -129,10 +129,14 @@ def plot_boxplot(csv_1, csv_2):
     # Boxplots erstellen
     functions = combined_df['Function'].unique()
 
+
     for function in functions:
-        plt.figure(figsize=(8, 6))
-        plt.title(f'Boxplot für Funktion {function}')
+        fig, ax = plt.subplots(figsize=(12,8))
+        spacing=1.5
+        width= 0.5
         
+        #plt.figure(figsize=(10, 6))
+    
         # Filtern der Daten für die aktuelle Funktion und PSO bzw. basinhop
         data_pso = combined_df[(combined_df['Function'] == function) & (combined_df['Optimizer'] == 'PSO')]
         data_basinhop = combined_df[(combined_df['Function'] == function) & (combined_df['Optimizer'] == 'basinhop')]
@@ -143,17 +147,37 @@ def plot_boxplot(csv_1, csv_2):
         pso_distances_grouped = [data_pso[data_pso['Size'] == size]['Distance'].values for size in unique_sizes]
         basinhop_distances_grouped = [data_basinhop[data_basinhop['Size'] == size]['Distance'].values for size in unique_sizes]
         
-        plt.boxplot(pso_distances_grouped, positions=unique_sizes - 0.2, widths=0.4, patch_artist=True, boxprops=dict(facecolor='lightblue'))
-        plt.boxplot(basinhop_distances_grouped, positions=unique_sizes + 0.2, widths=0.4, patch_artist=True, boxprops=dict(facecolor='lightgreen'))
+        #plt.boxplot(pso_distances_grouped)
+        #plt.boxplot(basinhop_distances_grouped)
+        n = len(basinhop_distances_grouped)
+        
 
-        plt.ylim([0,max_distance])
+        positions1 = np.arange(1, 2*n+1, 2) - width/1.5
+        box1 = plt.boxplot(pso_distances_grouped, positions=positions1, widths=width, patch_artist=True, boxprops=dict(facecolor='blue', alpha=0.5), labels=[f'List 1 - {i+1}' for i in range(n)])
+
+        # Create boxplots for list2
+        positions2 = np.arange(1, 2*n+1, 2) + width/1.5
+        box2 = plt.boxplot(basinhop_distances_grouped, positions=positions2, widths=width, patch_artist=True, boxprops=dict(facecolor='green', alpha=0.5), labels=[f'List 2 - {i+1}' for i in range(n)])
+
+        # Label the plot
+        plt.title(f'Boxplot für Funktion {function}')    
+        plt.xlabel('Categories')
+        plt.ylabel('Values')
+        plt.xticks(np.arange(1, 2*n+1, 2), [f'Size {i+1}' for i in range(n)])
+
+        # Add a legend
+        ax.legend([box1["boxes"][0], box2["boxes"][0]], ['pso', 'basin hop'], loc='upper right')
+
         
-        plt.xlabel('Size')
-        plt.ylabel('Distance')
-        plt.xticks(data_pso['Size'].unique())
-        plt.legend(['PSO', 'basinhop'])
         
-        plt.grid(True)
+        #plt.ylim([0,max_distance])
+        
+        #plt.xlabel('Size')
+        #plt.ylabel('Distance')
+        #plt.xticks(data_pso['Size'].unique())
+        #plt.legend(['PSO', 'basinhop'])
+        
+        #plt.grid(True)
         
         plt.savefig(f'images/compare_opt_Results/boxplot_{function}.png')  # Speichern der Grafik für jede Funktion
         plt.show()
@@ -166,7 +190,7 @@ if __name__ == "__main__":
     #all_data = read_data_from_files(file_names)
     #df = create_combined_dataframe(all_data)
     #plot_scatterplots(df)
-    files = ['opt_results/pso_results_all_50SwarmSize_50niter_test.csv', 'opt_results/basehop_results_all.csv']
+    files = ['opt_results/pso_results_all_50SwarmSize_20niter.csv', 'opt_results/basehop_results_all.csv']
     plot_boxplot(files[0], files[1])
 
 
