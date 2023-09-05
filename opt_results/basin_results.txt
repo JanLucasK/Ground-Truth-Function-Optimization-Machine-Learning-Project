@@ -318,3 +318,351 @@ f_03_5_3
 neural-net optium: [1.82701221 4.10416696], ground-thruth optimum: [0.74162252 3.51419074]
 distance: 1.2353714876285455
 
+f_24_4_0
+neural-net optium: [ 0.36743087 -1.95610882], ground-thruth optimum: [-1.09953118  0.41187654]
+distance: 2.785557818656704
+
+f_24_4_1
+neural-net optium: [-1.5744026   1.66397133], ground-thruth optimum: [-1.95942509  1.60086524]
+distance: 0.39015983298641504
+
+f_24_4_2
+neural-net optium: [-1.51510201  0.53293806], ground-thruth optimum: [-0.12868271 -1.56370597]
+distance: 2.5135780586243106
+
+f_24_4_3
+neural-net optium: [-2.05400129  1.51354747], ground-thruth optimum: [ 0.63566148 -1.52258357]
+distance: 4.056153048208328
+
+f_03_5_0
+neural-net optium: [1.63118634 4.14516211], ground-thruth optimum: [-1.9147766   3.56171033]
+distance: 3.593642876118686
+
+f_03_5_1
+neural-net optium: [-1.07827935  4.49132907], ground-thruth optimum: [-3.32837962  4.47986384]
+distance: 2.2501294781244976
+
+f_03_5_2
+neural-net optium: [0.76854529 3.08640072], ground-thruth optimum: [0.06961257 3.16374469]
+distance: 0.703199141843671
+
+f_03_5_3
+neural-net optium: [1.82701221 4.10416696], ground-thruth optimum: [0.74162252 3.51419074]
+distance: 1.2353714876285455
+
+f_01_5_0
+neural-net optium: [1.70406507 1.14807823], ground-thruth optimum: [0.21015794 1.26141809]
+distance: 1.498200401603833
+
+f_01_5_1
+neural-net optium: [-0.25889028  2.99261687], ground-thruth optimum: [-0.25889028  1.98261687]
+distance: 1.0100000000000002
+
+f_01_5_2
+neural-net optium: [1.6849213  1.86545666], ground-thruth optimum: [ 0.29802081 -0.21700481]
+distance: 2.5020269253858216
+
+f_01_5_3
+neural-net optium: [3.08011096 2.92722257], ground-thruth optimum: [0.91298578 0.93570662]
+distance: 2.943223969390351
+
+f_03_5_0
+neural-net optium: [3.88765412 4.13502835], ground-thruth optimum: [-1.9147766   3.56171033]
+distance: 5.8306857042594515
+
+f_03_5_1
+neural-net optium: [0.75962695 3.75427111], ground-thruth optimum: [-3.32837962  4.47986384]
+distance: 4.151901075477119
+
+f_03_5_2
+neural-net optium: [0.22876117 3.65657339], ground-thruth optimum: [0.06961257 3.16374469]
+distance: 0.5178884178918396
+
+f_03_5_3
+neural-net optium: [1.93465716 3.76368325], ground-thruth optimum: [0.74162252 3.51419074]
+distance: 1.2188429578577138
+
+f_24_5_0
+neural-net optium: [ 0.50837575 -1.97945227], ground-thruth optimum: [-1.09953118  0.41187654]
+distance: 2.8816346354094398
+
+f_24_5_1
+neural-net optium: [-1.93284275  2.31155318], ground-thruth optimum: [-1.95942509  1.60086524]
+distance: 0.7111848983614479
+
+f_24_5_2
+neural-net optium: [ 0.89515536 -1.39188082], ground-thruth optimum: [-0.12868271 -1.56370597]
+distance: 1.0381561808944912
+
+f_24_5_3
+neural-net optium: [ 0.87253508 -1.20158849], ground-thruth optimum: [ 0.63566148 -1.52258357]
+distance: 0.39893226082961675
+
+f_01_1_0
+neural-net optium: [3.55903189 0.88302483], ground-thruth optimum: [0.21015794 1.26141809]
+distance: 3.37018370323908
+
+f_01_1_1
+neural-net optium: [-1.89512093  4.79894346], ground-thruth optimum: [-0.25889028  1.98261687]
+distance: 3.257137727174227
+
+f_01_1_2
+neural-net optium: [1.0895697  0.47521092], ground-thruth optimum: [ 0.29802081 -0.21700481]
+distance: 1.051528537845224
+
+f_01_1_3
+neural-net optium: [0.68478036 1.47373206], ground-thruth optimum: [0.91298578 0.93570662]
+distance: 0.5844220152219238
+
+f_24_4_0
+neural-net optium: [ 0.36743087 -1.95610882], ground-thruth optimum: [-1.09953118  0.41187654]
+distance: 2.785557818656704
+
+f_24_4_1
+neural-net optium: [-1.5744026   1.66397133], ground-thruth optimum: [-1.95942509  1.60086524]
+distance: 0.39015983298641504
+
+f_24_4_2
+neural-net optium: [-1.51510201  0.53293806], ground-thruth optimum: [-0.12868271 -1.56370597]
+distance: 2.5135780586243106
+
+f_24_4_3
+neural-net optium: [-2.05400129  1.51354747], ground-thruth optimum: [ 0.63566148 -1.52258357]
+distance: 4.056153048208328
+
+f_03_5_0
+neural-net optium: [1.63118634 4.14516211], ground-thruth optimum: [-1.9147766   3.56171033]
+distance: 3.593642876118686
+
+f_03_5_1
+neural-net optium: [-1.07827935  4.49132907], ground-thruth optimum: [-3.32837962  4.47986384]
+distance: 2.2501294781244976
+
+f_03_5_2
+neural-net optium: [0.76854529 3.08640072], ground-thruth optimum: [0.06961257 3.16374469]
+distance: 0.703199141843671
+
+f_03_5_3
+neural-net optium: [1.82701221 4.10416696], ground-thruth optimum: [0.74162252 3.51419074]
+distance: 1.2353714876285455
+
+f_03_5_0
+neural-net optium: [3.88765412 4.13502835], ground-thruth optimum: [-1.9147766   3.56171033]
+distance: 5.8306857042594515
+
+f_03_5_1
+neural-net optium: [0.75962695 3.75427111], ground-thruth optimum: [-3.32837962  4.47986384]
+distance: 4.151901075477119
+
+f_03_5_2
+neural-net optium: [0.22876117 3.65657339], ground-thruth optimum: [0.06961257 3.16374469]
+distance: 0.5178884178918396
+
+f_03_5_3
+neural-net optium: [1.93465716 3.76368325], ground-thruth optimum: [0.74162252 3.51419074]
+distance: 1.2188429578577138
+
+f_24_5_0
+neural-net optium: [ 0.50837575 -1.97945227], ground-thruth optimum: [-1.09953118  0.41187654]
+distance: 2.8816346354094398
+
+f_24_5_1
+neural-net optium: [-1.93284275  2.31155318], ground-thruth optimum: [-1.95942509  1.60086524]
+distance: 0.7111848983614479
+
+f_24_5_2
+neural-net optium: [ 0.89515536 -1.39188082], ground-thruth optimum: [-0.12868271 -1.56370597]
+distance: 1.0381561808944912
+
+f_24_5_3
+neural-net optium: [ 0.87253508 -1.20158849], ground-thruth optimum: [ 0.63566148 -1.52258357]
+distance: 0.39893226082961675
+
+f_01_1_0
+neural-net optium: [-3.127362   -0.74022502], ground-thruth optimum: [0.21015794 1.26141809]
+distance: 3.8917366934012416
+
+f_01_1_1
+neural-net optium: [-4.11829093  4.96789528], ground-thruth optimum: [-0.25889028  1.98261687]
+distance: 4.879227445988546
+
+f_01_1_2
+neural-net optium: [-1.63908391 -4.98918885], ground-thruth optimum: [ 0.29802081 -0.21700481]
+distance: 5.150350977464892
+
+f_01_1_3
+neural-net optium: [-2.06025158 -4.99773515], ground-thruth optimum: [0.91298578 0.93570662]
+distance: 6.636706389541225
+
+f_24_4_0
+neural-net optium: [ 0.36743087 -1.95610882], ground-thruth optimum: [-1.09953118  0.41187654]
+distance: 2.785557818656704
+
+f_24_4_1
+neural-net optium: [-1.5744026   1.66397133], ground-thruth optimum: [-1.95942509  1.60086524]
+distance: 0.39015983298641504
+
+f_24_4_2
+neural-net optium: [-1.51510201  0.53293806], ground-thruth optimum: [-0.12868271 -1.56370597]
+distance: 2.5135780586243106
+
+f_24_4_3
+neural-net optium: [-2.05400129  1.51354747], ground-thruth optimum: [ 0.63566148 -1.52258357]
+distance: 4.056153048208328
+
+f_03_5_0
+neural-net optium: [1.63118634 4.14516211], ground-thruth optimum: [-1.9147766   3.56171033]
+distance: 3.593642876118686
+
+f_03_5_1
+neural-net optium: [-1.07827935  4.49132907], ground-thruth optimum: [-3.32837962  4.47986384]
+distance: 2.2501294781244976
+
+f_03_5_2
+neural-net optium: [0.76854529 3.08640072], ground-thruth optimum: [0.06961257 3.16374469]
+distance: 0.703199141843671
+
+f_03_5_3
+neural-net optium: [1.82701221 4.10416696], ground-thruth optimum: [0.74162252 3.51419074]
+distance: 1.2353714876285455
+
+f_03_5_0
+neural-net optium: [3.88765412 4.13502835], ground-thruth optimum: [-1.9147766   3.56171033]
+distance: 5.8306857042594515
+
+f_03_5_0
+neural-net optium: [3.88765412 4.13502835], ground-thruth optimum: [-1.9147766   3.56171033]
+distance: 5.8306857042594515
+
+f_03_5_1
+neural-net optium: [0.75962695 3.75427111], ground-thruth optimum: [-3.32837962  4.47986384]
+distance: 4.151901075477119
+
+f_03_5_2
+neural-net optium: [0.22876117 3.65657339], ground-thruth optimum: [0.06961257 3.16374469]
+distance: 0.5178884178918396
+
+f_03_5_3
+neural-net optium: [1.93465716 3.76368325], ground-thruth optimum: [0.74162252 3.51419074]
+distance: 1.2188429578577138
+
+f_24_5_0
+neural-net optium: [ 0.50837575 -1.97945227], ground-thruth optimum: [-1.09953118  0.41187654]
+distance: 2.8816346354094398
+
+f_24_5_1
+neural-net optium: [-1.93284275  2.31155318], ground-thruth optimum: [-1.95942509  1.60086524]
+distance: 0.7111848983614479
+
+f_24_5_2
+neural-net optium: [ 0.89515536 -1.39188082], ground-thruth optimum: [-0.12868271 -1.56370597]
+distance: 1.0381561808944912
+
+f_24_5_3
+neural-net optium: [ 0.87253508 -1.20158849], ground-thruth optimum: [ 0.63566148 -1.52258357]
+distance: 0.39893226082961675
+
+f_01_1_0
+neural-net optium: [-3.127362   -0.74022502], ground-thruth optimum: [0.21015794 1.26141809]
+distance: 3.8917366934012416
+
+f_01_1_1
+neural-net optium: [-4.11829093  4.96789528], ground-thruth optimum: [-0.25889028  1.98261687]
+distance: 4.879227445988546
+
+f_01_1_2
+neural-net optium: [-1.63908391 -4.98918885], ground-thruth optimum: [ 0.29802081 -0.21700481]
+distance: 5.150350977464892
+
+f_01_1_3
+neural-net optium: [-2.06025158 -4.99773515], ground-thruth optimum: [0.91298578 0.93570662]
+distance: 6.636706389541225
+
+f_24_4_0
+neural-net optium: [ 0.36743087 -1.95610882], ground-thruth optimum: [-1.09953118  0.41187654]
+distance: 2.785557818656704
+
+f_24_4_1
+neural-net optium: [-1.5744026   1.66397133], ground-thruth optimum: [-1.95942509  1.60086524]
+distance: 0.39015983298641504
+
+f_03_5_0
+neural-net optium: [4.9211743  4.34419157], ground-thruth optimum: [1.82373685 3.92352307]
+distance: 3.125872800450639
+
+f_03_5_1
+neural-net optium: [4.9211743  4.34419157], ground-thruth optimum: [1.82373685 3.92352307]
+distance: 3.125872800450639
+
+f_03_5_2
+neural-net optium: [4.9211743  4.34419157], ground-thruth optimum: [1.82373685 3.92352307]
+distance: 3.125872800450639
+
+f_03_5_3
+neural-net optium: [4.9211743  4.34419157], ground-thruth optimum: [1.82373685 3.92352307]
+distance: 3.125872800450639
+
+f_24_5_0
+neural-net optium: [-2.42146028  1.8527135 ], ground-thruth optimum: [-3.36327646  0.11507051]
+distance: 1.9764667680919177
+
+f_24_5_1
+neural-net optium: [-2.42146028  1.8527135 ], ground-thruth optimum: [-3.36327646  0.11507051]
+distance: 1.9764667680919177
+
+f_24_5_2
+neural-net optium: [-2.42146028  1.8527135 ], ground-thruth optimum: [-3.36327646  0.11507051]
+distance: 1.9764667680919177
+
+f_24_5_3
+neural-net optium: [-2.42146028  1.8527135 ], ground-thruth optimum: [-3.36327646  0.11507051]
+distance: 1.9764667680919177
+
+f_01_1_0
+neural-net optium: [-3.77865326  3.53559318], ground-thruth optimum: [0.37376857 1.37022463]
+distance: 4.683100253179576
+
+f_01_1_1
+neural-net optium: [-3.77865326  3.53559318], ground-thruth optimum: [0.37376857 1.37022463]
+distance: 4.683100253179576
+
+f_01_1_2
+neural-net optium: [-3.77865326  3.53559318], ground-thruth optimum: [0.37376857 1.37022463]
+distance: 4.683100253179576
+
+f_01_1_3
+neural-net optium: [-3.77865326  3.53559318], ground-thruth optimum: [0.37376857 1.37022463]
+distance: 4.683100253179576
+
+f_24_4_0
+neural-net optium: [-1.77740231  1.59993716], ground-thruth optimum: [-3.36327646  0.11507051]
+distance: 2.1725160050784904
+
+f_24_4_1
+neural-net optium: [-1.77740231  1.59993716], ground-thruth optimum: [-3.36327646  0.11507051]
+distance: 2.1725160050784904
+
+f_24_4_2
+neural-net optium: [-1.77740231  1.59993716], ground-thruth optimum: [-3.36327646  0.11507051]
+distance: 2.1725160050784904
+
+f_24_4_3
+neural-net optium: [-1.77740231  1.59993716], ground-thruth optimum: [-3.36327646  0.11507051]
+distance: 2.1725160050784904
+
+f_03_5_0
+neural-net optium: [1.83384576 4.12814586], ground-thruth optimum: [1.82373685 3.92352307]
+distance: 0.20487234401448942
+
+f_03_5_1
+neural-net optium: [1.83384576 4.12814586], ground-thruth optimum: [1.82373685 3.92352307]
+distance: 0.20487234401448942
+
+f_03_5_2
+neural-net optium: [1.83384576 4.12814586], ground-thruth optimum: [1.82373685 3.92352307]
+distance: 0.20487234401448942
+
+f_03_5_3
+neural-net optium: [1.83384576 4.12814586], ground-thruth optimum: [1.82373685 3.92352307]
+distance: 0.20487234401448942
+

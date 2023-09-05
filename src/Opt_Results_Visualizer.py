@@ -139,7 +139,7 @@ def plot_boxplot(csv_1, csv_2):
     
         # Filtern der Daten für die aktuelle Funktion und PSO bzw. basinhop
         data_pso = combined_df[(combined_df['Function'] == function) & (combined_df['Optimizer'] == 'PSO')]
-        data_basinhop = combined_df[(combined_df['Function'] == function) & (combined_df['Optimizer'] == 'basinhop')]
+        data_basinhop = combined_df[(combined_df['Function'] == function) & (combined_df['Optimizer'] == 'BasinHopping')]
         
         unique_sizes = np.sort(np.unique(np.concatenate([data_pso['Size'].unique(), data_basinhop['Size'].unique()])))
 
@@ -190,7 +190,7 @@ if __name__ == "__main__":
     #all_data = read_data_from_files(file_names)
     #df = create_combined_dataframe(all_data)
     #plot_scatterplots(df)
-    files = ['opt_results/pso_results_all_50SwarmSize_20niter.csv', 'opt_results/basehop_results_all.csv']
+    files = ['opt_results/pso_results_all_50SwarmSize_50niter.csv', 'opt_results/basinhop_results_selected_models.csv']
     plot_boxplot(files[0], files[1])
 
 
