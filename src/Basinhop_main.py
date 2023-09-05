@@ -11,15 +11,15 @@ def main():
     temp=100
     n_iter = 100
     models = [
-        ["f_01", "models/v3/training_v3_f01_5.pth", "f_01_5"],
-        ["f_03","models/v3/training_v3_f03_5.pth", "f_03_5"],
-        ["f_24", "models/v3/training_v3_f24_5.pth","f_24_5"],
-        ["f_01", "models/v3/training_v3_f01_1.pth", "f_01_1"],
-        ["f_03","models/v3/training_v3_f03_1.pth", "f_03_1"],
-        ["f_24", "models/v3/training_v3_f24_1.pth", "f_24_1"],
-        ["f_01", "models/v3/training_v3_f01_3.pth", "f_01_3"],
-        ["f_03","models/v3/training_v3_f03_3.pth", "f_03_3"],
-        ["f_24", "models/v3/training_v3_f24_3.pth", "f_24_3"]
+        #["f_01", "models/v3/training_v3_f01_5.pth", "f_01_5"],
+        #["f_03","models/v3/training_v3_f03_5.pth", "f_03_5"],
+        #["f_24", "models/v3/training_v3_f24_5.pth","f_24_5"],
+        #["f_01", "models/v3/training_v3_f01_1.pth", "f_01_1"],
+        #["f_03","models/v3/training_v3_f03_1.pth", "f_03_1"],
+        #["f_24", "models/v3/training_v3_f24_1.pth", "f_24_1"],
+        #["f_01", "models/v3/training_v3_f01_3.pth", "f_01_3"],
+        ["f_24","models/training_v4_f24_4.pth", "f_24_4"],
+        ["f_03", "models/training_v5_f03_4.pth", "f_03_5"]
         ]
     
     basehop_opt = bh_optimizer(input_bounds=[(-5.0,5.0), (-5.0,5.0)])

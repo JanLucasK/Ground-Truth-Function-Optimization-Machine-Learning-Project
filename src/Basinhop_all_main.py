@@ -42,7 +42,10 @@ def main():
     n_iter = 100
 
     # List of subdirectories containing the models
-    model_subdirs = ["models/v1", "models/v2", "models/v3"]
+    model_subdirs = ["models/v1",
+                     "models/v2", 
+                     "models/v3"
+                     ]
 
     basehop_opt = bh_optimizer(input_bounds=[(-5.0,5.0), (-5.0,5.0)])
 

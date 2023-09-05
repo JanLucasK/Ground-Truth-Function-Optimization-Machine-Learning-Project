@@ -59,7 +59,8 @@ class Basinhopping_optimizer():
         result_bbob = basinhopping(self.call_bbob, initial_guess, niter=niter, T=T, stepsize=stepsize, seed=seed, callback=self.callback)
         bbob_path = np.array(self.path)
         #self.visualize(result_nn, result_bbob)
-        fig = self.visualize_paths(bbob_path, model_path, result_bbob, result_nn)
+        if save_image:
+            fig = self.visualize_paths(bbob_path, model_path, result_bbob, result_nn)
 
         return result_nn, result_bbob
     
