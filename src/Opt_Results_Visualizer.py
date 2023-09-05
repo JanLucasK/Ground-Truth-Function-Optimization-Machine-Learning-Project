@@ -179,7 +179,7 @@ def plot_boxplot(csv_1, csv_2):
         
         #plt.grid(True)
         
-        plt.savefig(f'images/compare_opt_Results/boxplot_{function}.png')  # Speichern der Grafik für jede Funktion
+        plt.savefig(f'images/compare_opt_Results/2boxplot_{function}.png')  # Speichern der Grafik für jede Funktion
         plt.show()
 
 
@@ -190,7 +190,7 @@ if __name__ == "__main__":
     #all_data = read_data_from_files(file_names)
     #df = create_combined_dataframe(all_data)
     #plot_scatterplots(df)
-    files = ['opt_results/pso_results_all_50SwarmSize_20niter.csv', 'opt_results/basehop_results_all.csv']
+    files = ['opt_results/pso_results_selected_models.csv', 'opt_results/basehop_results_all.csv']
     plot_boxplot(files[0], files[1])
 
 

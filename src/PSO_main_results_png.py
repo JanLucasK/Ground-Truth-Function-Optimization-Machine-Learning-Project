@@ -34,7 +34,7 @@ def main():
             print(distance)
             
             # Write the task name to the results file
-            with open('opt_results/pso_results_50SwarmSize_v3_5_20niter.txt', "a") as f:
+            with open('opt_results/pso_results_50SwarmSize_v3_5_20niter_2.txt', "a") as f:
                 f.write(f"{name}")
                 f.write(f"\n")
                 f.write(f"neural-net optium: {result_nn}, ground-thruth optimum: {result_bbob}")

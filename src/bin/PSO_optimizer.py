@@ -116,7 +116,7 @@ class PSO_optimizer():
 
         plt.tight_layout()
         if self.save_image:
-            plt.savefig(f'images/PSO/50_SwarmSize_v3_5/{self.image_name}', dpi=300)  # Save the plot as a PNG image
+            plt.savefig(f'images/PSO/2_50_SwarmSize_v3_5/{self.image_name}', dpi=300)  # Save the plot as a PNG image
         
         # plt.show()
         self.model_path = pd.DataFrame(columns=["x1", "x2", "y"])  # Reset data
