@@ -163,7 +163,7 @@ def plot_boxplot(csv_1, csv_2):
         plt.title(f'Boxplot für Funktion {function}')    
         plt.xlabel('Categories')
         plt.ylabel('Values')
-        plt.xticks(np.arange(1, 2*n+1, 2), [f'Size {i+1}' for i in range(n)])
+        plt.xticks(np.arange(1, 2*n+1, 2), [f'data size {i}' for i in unique_sizes])
 
         # Add a legend
         ax.legend([box1["boxes"][0], box2["boxes"][0]], ['pso', 'basin hop'], loc='upper right')
