@@ -95,7 +95,7 @@ class Basinhopping_optimizer():
         if self.save_image:
             # Save the plot as a PNG file
             plt.savefig(f'images/basinhopping/{self.image_name}', dpi=300)  # You can adjust the dpi (dots per inch) as needed
-        plt.show()
+        #plt.show()
         return plt
     
     
