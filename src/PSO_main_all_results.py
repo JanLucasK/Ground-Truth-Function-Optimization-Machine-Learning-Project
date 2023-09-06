@@ -1,6 +1,7 @@
 import csv
 from bin.PSO_opt_withoutVisualization import PSO_optimizer  # Import the PSO_optimizer class
 import numpy as np
+from RMSE_Calc import rmse_calc
 
 def main():
     input_bounds = [(-5.0, 5.0), (-5.0, 5.0)]
@@ -69,7 +70,7 @@ def main():
 
     # Create a CSV file for results
     with open('opt_results/pso_results_all_50SS_20niter.csv', mode='w', newline='') as csv_file:
-        fieldnames = ['Path', 'Version', 'Function', 'Size', 'Seed', 'Neural_net_optimum', 'Ground_truth_optimum', 'Distance', 'Optimizer']
+        fieldnames = ['Path', 'Version', 'Function', 'Size', 'Seed', 'Neural_net_optimum', 'Ground_truth_optimum', 'Distance', 'RMSE', 'Optimizer']
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
         writer.writeheader()
 
@@ -77,10 +78,10 @@ def main():
             model_name = model[0]
             model_path = model[1]
             seed = 0
-            for _ in range(4):
+            for _ in range(20):
                 name = f"{model_name}_{seed}"
                 np.random.seed(seed)
-                result_nn, result_bbob = pso_opt.optimize(model_path=model_path, function=model_name,
+                result_nn, result_bbob, nn_path_df = pso_opt.optimize(model_path=model_path, function=model_name,
                                                                swarmsize=swarmsize,
                                                                niter=niter, seed=seed,
                                                                save_image=True, image_name=name)
@@ -91,6 +92,12 @@ def main():
                 # Calculate the distance between the two optimization results using Euclidean norm
                 distance = round(np.linalg.norm(result_nn - result_bbob), 5)
                 print(distance)
+                
+                nn_path = nn_path_df[['x1', 'x2']].to_numpy()
+                # Calculate RMSE
+                calculator = rmse_calc(x_y_coordinates= nn_path, model_path=model_path, function_name=model_name)
+                rmse =calculator.evaluate_model_and_bbob()
+                print(rmse)
                 
                 # Get the size from the model path
                 size = get_size_from_path(model_path)
@@ -107,6 +114,7 @@ def main():
                                  'Neural_net_optimum': result_nn,
                                  'Ground_truth_optimum': result_bbob,
                                  'Distance': distance,
+                                 'RMSE': rmse,
                                  'Optimizer': 'PSO'})
                 seed += 1
 

@@ -40,6 +40,7 @@ class Basinhopping_optimizer():
     def optimize(self, model_path,  function="f_01", initial_guess=[0,0], niter=100, T=100, stepsize=0.1,  image_name = "Default", save_image=False, seed = 42):
         self.model = self.load_model(model_path)
         self.model.eval()
+        self.save_image=save_image
         if function == "f_01":
             self.bbob = bbobtorch.create_f01(2, seed=42)
         elif function=="f_03":
@@ -62,7 +63,7 @@ class Basinhopping_optimizer():
         if save_image:
             fig = self.visualize_paths(bbob_path, model_path, result_bbob, result_nn)
 
-        return result_nn, result_bbob
+        return result_nn, result_bbob, model_path, bbob_path
     
     def visualize_paths(self, path_bbob, path_model, result_bbob, result_model):
         x_grid, y_grid = np.meshgrid(np.arange(-5, 5.01, 0.01), np.arange(-5, 5.01, 0.01))
@@ -94,7 +95,7 @@ class Basinhopping_optimizer():
         if self.save_image:
             # Save the plot as a PNG file
             plt.savefig(f'images/basinhopping/{self.image_name}', dpi=300)  # You can adjust the dpi (dots per inch) as needed
-        #plt.show()
+        plt.show()
         return plt
     
     

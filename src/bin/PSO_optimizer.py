@@ -58,15 +58,14 @@ class PSO_optimizer():
 
         # Use PSO optimizer
         result_nn, _ = pso(self.call_nn, swarmsize=swarmsize, maxiter=niter, minstep=1e-5, lb = [-5,-5], ub=[5,5])
-        result_bbob, _ = pso(self.call_bbob, swarmsize=swarmsize, maxiter=niter, minstep=1e-5, lb = [-5,-5], ub=[5,5])
         
-        model_path = np.array(self.path)
+        result_bbob, _ = pso(self.call_bbob, swarmsize=swarmsize, maxiter=niter, minstep=1e-5, lb = [-5,-5], ub=[5,5])
         self.path = []
 
         # Visualize the optimization paths
         fig = self.visualize_paths(self.bbob_path, self.model_path, result_bbob, result_nn, swarmsize)
 
-        return result_nn, result_bbob, fig
+        return result_nn, result_bbob, self.model_path, self.bbob_path, fig
     
     
     def visualize_paths(self, path_bbob, path_model, result_bbob, result_model, swarmsize):

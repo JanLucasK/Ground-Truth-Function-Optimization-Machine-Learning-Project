@@ -457,4 +457,4 @@ dependencies:
       - torch==2.0.1
       - triton==2.0.0
       - tzdata==2023.3
-prefix: /home/luka/anaconda3/envs/MLP_Env
+prefix: /home/fabi/anaconda3/envs/MLP_Env

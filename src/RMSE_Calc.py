@@ -4,14 +4,17 @@ import bbobtorch
 from sklearn.metrics import mean_squared_error
 
 
-class RSME_Calc:
+class rmse_calc:
 
-    def __init__(self, x_y_coordinates, model, function_name):
+    def __init__(self, x_y_coordinates, model_path, function_name):
 
         self.x_y_coordinates = x_y_coordinates
-        self.model = model
+        self.model = self.load_model(model_path)
         self.function_name = function_name
 
+    def load_model(self, path):
+       return torch.load(path)
+   
     def evaluate_model_and_bbob(self):
         # Load the PyTorch model
         self.model.eval()
@@ -43,8 +46,8 @@ class RSME_Calc:
     
             bbob_values.append(fn(torch.tensor(np.column_stack((coords[0], coords[1])), dtype=torch.float32)))
 
-        print(predictions)
-        print(bbob_values)
+        #print(predictions)
+        #print(bbob_values)
         
         
         # Calculate RMSE between predictions and BBOB values
@@ -54,8 +57,8 @@ class RSME_Calc:
 
 
 test_array = [[3.0,4.0],[5.0,4.0],[-1.0,-2.0],[3.0,3.0],[4.0,-5.0],[4.0,3.0],[1.0,1.0],[2.0,1.0],[4.0,2.0],[4.0,3.0]]
-test_model = torch.load("models/v3/training_v3_f01_3.pth")
+test_model = ("models/v3/training_v3_f01_3.pth")
 test_function_string = "f_01"
 
-calculator = RSME_Calc(test_array,test_model,test_function_string)
+calculator = rmse_calc(test_array,test_model,test_function_string)
 print(calculator.evaluate_model_and_bbob())

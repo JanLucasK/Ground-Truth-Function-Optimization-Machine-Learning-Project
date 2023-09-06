@@ -58,15 +58,22 @@ class PSO_optimizer():
 
         # Use PSO optimizer
         result_nn, _ = pso(self.call_nn, swarmsize=swarmsize, maxiter=niter, minstep=1e-5, lb = [-5,-5], ub=[5,5])
-        result_bbob, _ = pso(self.call_bbob, swarmsize=swarmsize, maxiter=niter, minstep=1e-5, lb = [-5,-5], ub=[5,5])
-        
-        model_path = np.array(self.path)
         self.path = []
+        
+        result_bbob, _ = pso(self.call_bbob, swarmsize=swarmsize, maxiter=niter, minstep=1e-5, lb = [-5,-5], ub=[5,5])
+        self.path = []
+
 
         # Visualize the optimization paths
         # fig = self.visualize_paths(self.bbob_path, self.model_path, result_bbob, result_nn, swarmsize)
-
-        return result_nn, result_bbob
+        path = self.model_path
+        best_particles=[]
+        for j in range(0, len(path), swarmsize):
+                swarm = path[j:j+swarmsize]
+                best_particle = swarm.loc[swarm['y'].idxmin()]  # Find the best particle in the swarm
+                best_particles.append(best_particle)
+        
+        return result_nn, result_bbob, path
     
     
     def visualize_paths(self, path_bbob, path_model, result_bbob, result_model, swarmsize):
