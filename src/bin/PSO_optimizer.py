@@ -5,7 +5,7 @@ import bbobtorch
 import matplotlib.pyplot as plt
 from pyswarm import pso
 import matplotlib.animation as animation
-
+    
 
 class PSO_optimizer():
     def __init__(self, input_bounds=None, swarmsize=50) -> None:
