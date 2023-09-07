@@ -73,6 +73,7 @@ def main():
     niter = 100
     basehop_opt = bh_optimizer(input_bounds=[(-5.0,5.0), (-5.0,5.0)])
     
+    counter = 0
         
     # Create a CSV file for results
     with open('opt_results/basinhop_results_selected_models.csv', mode='w', newline='') as csv_file:
@@ -84,7 +85,7 @@ def main():
             model_name = model[0]
             model_path = model[1]
             seed = 0
-            for _ in range(20):
+            for _ in range(5):
                 name = f"{model_name}_{seed}"
                 np.random.seed(seed)
                 result_nn, result_bbob, nn_path, bbob_path = basehop_opt.optimize(model_path=model_path, function=model_name,
@@ -120,6 +121,9 @@ def main():
                                  'Distance': distance,
                                  'RMSE': rmse,
                                  'Optimizer': 'BasinHopping'})
+                
+                counter += 1
+                print('Evaluations: '+str(counter)+'/160')
                 seed += 1
                 
 if __name__ == "__main__":
