@@ -63,9 +63,11 @@ class PSO_optimizer():
         self.path = []
 
         # Visualize the optimization paths
-        fig = self.visualize_paths(self.bbob_path, self.model_path, result_bbob, result_nn, swarmsize)
-
-        return result_nn, result_bbob, self.model_path, self.bbob_path, fig
+        if save_image==True:
+            fig = self.visualize_paths(self.bbob_path, self.model_path, result_bbob, result_nn, swarmsize)
+            return result_nn, result_bbob, self.model_path, self.bbob_path, fig
+        else: 
+            return result_nn, result_bbob, self.model_path, self.bbob_path
     
     
     def visualize_paths(self, path_bbob, path_model, result_bbob, result_model, swarmsize):

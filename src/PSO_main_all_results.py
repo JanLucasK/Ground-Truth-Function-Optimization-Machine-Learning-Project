@@ -1,5 +1,5 @@
 import csv
-from bin.PSO_opt_withoutVisualization import PSO_optimizer  # Import the PSO_optimizer class
+from bin.PSO_optimizer import PSO_optimizer  # Import the PSO_optimizer class
 import numpy as np
 from RMSE_Calc import rmse_calc
 
@@ -86,7 +86,7 @@ def main():
                 result_nn, result_bbob, nn_path_df = pso_opt.optimize(model_path=model_path, function=model_name,
                                                                swarmsize=swarmsize,
                                                                niter=niter, seed=seed,
-                                                               save_image=True, image_name=name)
+                                                               save_image=False, image_name=name)
                 print(name)
                 print(result_nn)
                 print(result_bbob)

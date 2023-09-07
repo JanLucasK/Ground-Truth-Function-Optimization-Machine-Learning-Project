@@ -15,16 +15,26 @@ def main():
         ]
     pso_opt = PSO_optimizer(input_bounds=input_bounds)
     
+    # decide if figures should be created and saved
+    save_image=False
+
     # Iterate over different optimization tasks
     for model in models:
         seed = 0
         for _ in range(4):
             name = model[0]+"_"+str(seed)
             np.random.seed(seed)
-            result_nn, result_bbob, fig = pso_opt.optimize(model_path= model[1], function =model[0],  
-                                                               swarmsize=swarmsize, 
-                                                               niter=niter, seed= seed, 
-                                                               save_image=True, image_name=name)
+            if save_image==True:
+                result_nn, result_bbob, _, _, fig = pso_opt.optimize(model_path= model[1], function =model[0],  
+                                                                swarmsize=swarmsize, 
+                                                                niter=niter, seed= seed, 
+                                                                save_image=True, image_name=name)
+            else: 
+                result_nn, result_bbob, _, _, = pso_opt.optimize(model_path= model[1], function =model[0],  
+                                                                swarmsize=swarmsize, 
+                                                                niter=niter, seed= seed, 
+                                                                save_image=False, image_name=name)
+            
             print(model[0]+"_"+str(seed))
             print(result_nn)
             print(result_bbob)
