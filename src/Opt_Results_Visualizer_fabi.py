@@ -17,6 +17,7 @@ def read_data_from_files(file_names):
         current_nn_optimum = None
         current_distance = None
         found_ground_truth_optimum = False
+        current_rmse = None
 
         # Add the optimizer column based on the file name
         if 'pso' in file_name.lower():
@@ -39,6 +40,7 @@ def read_data_from_files(file_names):
                         data['Ground-Truth Optimum'].append(None)
                     data['Distance'].append(current_distance)
                     data['Optimizer'].append(current_optimizer)
+                    data['RMSE'].append(current_rmse)
                 current_function = line
                 current_seed = int(line.split('_')[-1])
                 found_ground_truth_optimum = False
@@ -147,27 +149,30 @@ def plot_boxplot(csv_1, csv_2):
         pso_distances_grouped = [data_pso[data_pso['Size'] == size]['Distance'].values for size in unique_sizes]
         basinhop_distances_grouped = [data_basinhop[data_basinhop['Size'] == size]['Distance'].values for size in unique_sizes]
         
+
+        pso_rmse_grouped = [data_pso[data_pso['Size'] == size]['RMSE'].values for size in unique_sizes]
+        basinhop_rmse_grouped = [data_basinhop[data_basinhop['Size'] == size]['RMSE'].values for size in unique_sizes]
         #plt.boxplot(pso_distances_grouped)
         #plt.boxplot(basinhop_distances_grouped)
         n = len(basinhop_distances_grouped)
         
 
-        positions1 = np.arange(1, 2*n+1, 2) - width/1.5
-        box1 = plt.boxplot(pso_distances_grouped, positions=positions1, widths=width, patch_artist=True, boxprops=dict(facecolor='blue', alpha=0.5), labels=[f'List 1 - {i+1}' for i in range(n)])
+        #positions1 = np.arange(1, 2*n+1, 2) - width/1.5
+        #box1 = plt.boxplot(pso_rmse_grouped, positions=positions1, widths=width, patch_artist=True, boxprops=dict(facecolor='blue', alpha=0.5), labels=[f'List 1 - {i+1}' for i in range(n)])
 
         # Create boxplots for list2
         positions2 = np.arange(1, 2*n+1, 2) + width/1.5
-        box2 = plt.boxplot(basinhop_distances_grouped, positions=positions2, widths=width, patch_artist=True, boxprops=dict(facecolor='green', alpha=0.5), labels=[f'List 2 - {i+1}' for i in range(n)])
+        box2 = plt.boxplot(basinhop_rmse_grouped, positions=positions2, widths=width, patch_artist=True, boxprops=dict(facecolor='green', alpha=0.5), labels=[f'List 2 - {i+1}' for i in range(n)])
 
         # Label the plot
         plt.title(f'Boxplot für Funktion {function}')    
         plt.xlabel('Input Data Size')
-        plt.ylabel('distance between minima')
+        plt.ylabel('RMSE for paths on approximation')
         plt.xticks(np.arange(1, 2*n+1, 2), [f'{i}' for i in unique_sizes])
 
         # Add a legend
-        ax.legend([box1["boxes"][0], box2["boxes"][0]], ['pso', 'basin hop'], loc='upper right')
-
+        ax.legend([box2["boxes"][0]], ['basin hop'], loc='upper right')
+        #ax.legend([box1["boxes"][0], box2["boxes"][0]], ['pso', 'basin hop'], loc='upper right')
         
         
         #plt.ylim([0,max_distance])
@@ -179,7 +184,7 @@ def plot_boxplot(csv_1, csv_2):
         
         #plt.grid(True)
         
-        plt.savefig(f'images/compare_opt_Results/boxplot_{function}.png')  # Speichern der Grafik für jede Funktion
+        plt.savefig(f'images/compare_opt_Results/boxplot_RMSE_{function}.png')  # Speichern der Grafik für jede Funktion
         plt.show()
 
 
@@ -190,7 +195,7 @@ if __name__ == "__main__":
     #all_data = read_data_from_files(file_names)
     #df = create_combined_dataframe(all_data)
     #plot_scatterplots(df)
-    files = ['opt_results/pso_results_all_selectedModels_50SS_20niter.csv', 'opt_results/basinhop_results_selected_models.csv']
+    files = ['opt_results/pso_results_all_50SS_20niter.csv', 'opt_results/basinhop_results_selected_models.csv']
     plot_boxplot(files[0], files[1])
 
 
