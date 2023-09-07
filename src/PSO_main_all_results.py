@@ -74,11 +74,13 @@ def main():
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
         writer.writeheader()
 
+        counter = 1
+
         for model in model_files:
             model_name = model[0]
             model_path = model[1]
             seed = 0
-            for _ in range(20):
+            for _ in range(5):
                 name = f"{model_name}_{seed}"
                 np.random.seed(seed)
                 result_nn, result_bbob, nn_path_df = pso_opt.optimize(model_path=model_path, function=model_name,
@@ -116,6 +118,9 @@ def main():
                                  'Distance': distance,
                                  'RMSE': rmse,
                                  'Optimizer': 'PSO'})
+                
+                print("Counter: "+str(counter))
+                counter += 1
                 seed += 1
 
 if __name__ == "__main__":
