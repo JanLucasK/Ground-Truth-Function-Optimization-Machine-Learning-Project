@@ -14,7 +14,7 @@ from torch.utils.data import DataLoader, TensorDataset
 
 
 class Trainer():
-    def __init__(self, data_file_path, seed, neurons_per_layer, num_layers, learning_rate, batch_size, num_epochs, save_image, image_name, save_model, model_name):
+    def __init__(self, data_file_path, seed, neurons_per_layer, num_layers, learning_rate, batch_size, num_epochs, save_image, image_name, save_model, model_name, gt_function_show):
 
         if torch.cuda.is_available():
             device = torch.device("cuda")
@@ -35,6 +35,7 @@ class Trainer():
         self.image_name = image_name
         self.save_model = save_model
         self.model_name = model_name
+        self.gt_function_show = gt_function_show
 
         self._load_data()
         # self._scale_data()
@@ -101,21 +102,27 @@ class Trainer():
 
         return results.numpy().reshape(x_grid.shape)
 
-    def _plot_heatmap(self, x_grid, y_grid, predictions, function_values):
+    def _plot_heatmap(self, x_grid, y_grid, predictions, function_values, gt_function_show):
         
-        fig, axes = plt.subplots(1, 2, figsize=(16, 8))
+        if gt_function_show:
+            fig, axes = plt.subplots(1, 2, figsize=(16, 8))
 
-        sns.heatmap(predictions, cmap='viridis', xticklabels=False, yticklabels=False, ax=axes[0])
-        axes[0].set_xlabel('X Coordinate')
-        axes[0].set_ylabel('Y Coordinate')
-        axes[0].set_title('Heatmap of Model Predictions')
+            sns.heatmap(predictions, cmap='viridis', xticklabels=False, yticklabels=False, ax=axes[0])
+            axes[0].set_xlabel('X Coordinate')
+            axes[0].set_ylabel('Y Coordinate')
+            axes[0].set_title('Heatmap of Model Predictions')
 
-        sns.heatmap(function_values, cmap='viridis', xticklabels=False, yticklabels=False, ax=axes[1])
-        axes[1].set_xlabel('X Coordinate')
-        axes[1].set_ylabel('Y Coordinate')
-        axes[1].set_title('Heatmap of BBOB Function')
+            sns.heatmap(function_values, cmap='viridis', xticklabels=False, yticklabels=False, ax=axes[1])
+            axes[1].set_xlabel('X Coordinate')
+            axes[1].set_ylabel('Y Coordinate')
+            axes[1].set_title('Heatmap of BBOB Function')
 
-        plt.tight_layout()
+            plt.tight_layout()
+        
+        else:
+
+            sns.heatmap(predictions, cmap='viridis', xticklabels=False, yticklabels=False)
+            plt.tight_layout()
 
         if self.save_image:
             # Save the plot as a PNG file
@@ -171,7 +178,7 @@ class Trainer():
         function_values = self._get_gt_function(x_grid, y_grid)
 
         # Plot the heatmaps
-        self._plot_heatmap(x_grid, y_grid, predictions, function_values)
+        self._plot_heatmap(x_grid, y_grid, predictions, function_values, self.gt_function_show)
 
     def _save_model(self, model, file_name):
         if self.save_model:

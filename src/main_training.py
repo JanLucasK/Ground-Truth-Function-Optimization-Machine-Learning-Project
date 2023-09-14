@@ -13,7 +13,7 @@ def open_config(config_file_path):
 
 def main():
 
-    config = open_config("config/training_version_5.json")
+    config = open_config("config/test_config.json")
 
     for i in range(0,len(config["data_file_path"])):
         trainer = Trainer(
@@ -28,6 +28,7 @@ def main():
             config["image_name"][i],
             config["save_model"][i],
             config["model_name"][i],
+            config["gt_function_show"][i]
         )
         trainer.train()
         trainer.evaluate_grid()     

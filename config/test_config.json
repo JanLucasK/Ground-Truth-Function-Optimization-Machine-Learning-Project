@@ -1,15 +1,16 @@
 {
     "data_file_path":[
-        "./data/raw/f_01_s_10000.parquet"
+        "./data/raw/f_01_s_1000.parquet"
     ],
     "seed":[42],
     "neurons_per_layer": [64],
     "num_layers": [4],
     "learning_rate": [0.001],
-    "batch_size": [200],
-    "num_epochs": [100],
+    "batch_size": [20],
+    "num_epochs": [10],
     "save_image": [true],
     "image_name": ["test.png"],
     "save_model": [true],
-    "model_name": ["test.pth"]
+    "model_name": ["test.pth"],
+    "gt_function_show":[false]
 }
