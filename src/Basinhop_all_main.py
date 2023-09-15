@@ -100,7 +100,8 @@ def main():
                 print(distance)
                 
                 # Calculate RMSE
-                calculator = rmse_calc(x_y_coordinates= nn_path, model_path=model_path, function_name=model_name)
+                calculator = rmse_calc(x_y_coordinates= nn_path, model_path=model_path, function_name=model_name, 
+                                       input_bounds = [-5,5])
                 rmse =calculator.evaluate_model_and_bbob()
                 print(rmse)
                 

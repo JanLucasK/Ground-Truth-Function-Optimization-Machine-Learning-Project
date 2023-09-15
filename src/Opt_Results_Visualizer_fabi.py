@@ -157,8 +157,8 @@ def plot_boxplot(csv_1, csv_2):
         n = len(basinhop_distances_grouped)
         
 
-        #positions1 = np.arange(1, 2*n+1, 2) - width/1.5
-        #box1 = plt.boxplot(pso_rmse_grouped, positions=positions1, widths=width, patch_artist=True, boxprops=dict(facecolor='blue', alpha=0.5), labels=[f'List 1 - {i+1}' for i in range(n)])
+        positions1 = np.arange(1, 2*n+1, 2) - width/1.5
+        box1 = plt.boxplot(pso_rmse_grouped, positions=positions1, widths=width, patch_artist=True, boxprops=dict(facecolor='blue', alpha=0.5), labels=[f'List 1 - {i+1}' for i in range(n)])
 
         # Create boxplots for list2
         positions2 = np.arange(1, 2*n+1, 2) + width/1.5
@@ -171,8 +171,8 @@ def plot_boxplot(csv_1, csv_2):
         plt.xticks(np.arange(1, 2*n+1, 2), [f'{i}' for i in unique_sizes])
 
         # Add a legend
-        ax.legend([box2["boxes"][0]], ['basin hop'], loc='upper right')
-        #ax.legend([box1["boxes"][0], box2["boxes"][0]], ['pso', 'basin hop'], loc='upper right')
+        #ax.legend([box2["boxes"][0]], ['basin hop'], loc='upper right')
+        ax.legend([box1["boxes"][0], box2["boxes"][0]], ['pso', 'basin hop'], loc='upper right')
         
         
         #plt.ylim([0,max_distance])
