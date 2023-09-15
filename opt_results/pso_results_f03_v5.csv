@@ -1,0 +1,3 @@
+Path,Version,Function,Size,Seed,Neural_net_optimum,Ground_truth_optimum,Distance,RMSE,Optimizer
+models/training_v5_f03_3.pth,models,f_03,10000,3,[3.84587134 4.50590935],[3.82302994 4.15176284],0.35488,6.218672253537241,PSO
+models/training_v5_f03_4.pth,models,f_03,100000,3,[3.82584492 4.51136885],[3.82302994 4.15176284],0.35962,9.343020221442643,PSO
