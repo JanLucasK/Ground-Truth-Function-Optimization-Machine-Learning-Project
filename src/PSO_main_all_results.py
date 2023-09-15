@@ -83,7 +83,7 @@ def main():
             for _ in range(5):
                 name = f"{model_name}_{seed}"
                 np.random.seed(seed)
-                result_nn, result_bbob, nn_path_df = pso_opt.optimize(model_path=model_path, function=model_name,
+                result_nn, result_bbob, nn_path_df, _= pso_opt.optimize(model_path=model_path, function=model_name,
                                                                swarmsize=swarmsize,
                                                                niter=niter, seed=seed,
                                                                save_image=False, image_name=name)
@@ -97,7 +97,8 @@ def main():
                 
                 nn_path = nn_path_df[['x1', 'x2']].to_numpy()
                 # Calculate RMSE
-                calculator = rmse_calc(x_y_coordinates= nn_path, model_path=model_path, function_name=model_name)
+                calculator = rmse_calc(x_y_coordinates= nn_path, model_path=model_path, function_name=model_name,
+                                       input_bounds = [-5,5])
                 rmse =calculator.evaluate_model_and_bbob()
                 print(rmse)
                 

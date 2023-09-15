@@ -25,7 +25,7 @@ class Basinhopping_optimizer():
             penalty = 0
             for val, (min_val, max_val) in zip(x, self.input_bounds):
                 if val < min_val or val > max_val:
-                    penalty += 1e5  # Adjust the penalty value based on your specific needs 
+                    penalty = 1e2  # Adjust the penalty value based on your specific needs 
         
         x_tensor = torch.tensor(x, dtype=torch.float32).unsqueeze(0)  # unsqueeze to add batch dimension
         x_tensor = x_tensor.view(1, -1) 
@@ -94,7 +94,7 @@ class Basinhopping_optimizer():
     
         if self.save_image:
             # Save the plot as a PNG file
-            plt.savefig(f'images/basinhopping/{self.image_name}', dpi=300)  # You can adjust the dpi (dots per inch) as needed
+            plt.savefig(f'images/basinhopping/{self.image_name}', dpi=300)
         #plt.show()
         return plt
     
@@ -105,7 +105,7 @@ class Basinhopping_optimizer():
             penalty = 0
             for val, (min_val, max_val) in zip(x, self.input_bounds):
                 if val < min_val or val > max_val:
-                    penalty += 1e5  # Adjust the penalty value based on your specific needs
+                    penalty = 1e3
         
         x_tensor = torch.tensor([x], dtype=torch.float32)
         x_tensor = x_tensor.view(1, -1) 
@@ -114,7 +114,6 @@ class Basinhopping_optimizer():
         y_scalar = torch.sum(y).item() + penalty
         
         model_point = [x[0], x[1], y_scalar]
-
         self.bbob_path.loc[len(self.bbob_path)] = model_point
         return y_scalar
     
