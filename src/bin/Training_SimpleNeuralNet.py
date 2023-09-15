@@ -123,11 +123,13 @@ class Trainer():
 
             sns.heatmap(predictions, cmap='viridis', xticklabels=False, yticklabels=False)
             plt.tight_layout()
+            
 
         if self.save_image:
             # Save the plot as a PNG file
             function_name = self.data_file_path.split("/")[-1][0:4]
             plt.savefig(f'images/{self.image_name}', dpi=300)  # You can adjust the dpi (dots per inch) as needed
+            plt.clf()
 
 
 

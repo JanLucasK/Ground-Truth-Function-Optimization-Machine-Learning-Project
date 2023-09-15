@@ -56,9 +56,9 @@ class rmse_calc:
         return rmse
 
 
-test_array = [[3.0,4.0],[5.0,4.0],[-1.0,-2.0],[3.0,3.0],[4.0,-5.0],[4.0,3.0],[1.0,1.0],[2.0,1.0],[4.0,2.0],[4.0,3.0]]
-test_model = ("models/v3/training_v3_f01_3.pth")
-test_function_string = "f_01"
+#test_array = [[3.0,4.0],[5.0,4.0],[-1.0,-2.0],[3.0,3.0],[4.0,-5.0],[4.0,3.0],[1.0,1.0],[2.0,1.0],[4.0,2.0],[4.0,3.0]]
+#test_model = ("models/v3/training_v3_f01_3.pth")
+#test_function_string = "f_01"
 
-calculator = rmse_calc(test_array,test_model,test_function_string)
-print(calculator.evaluate_model_and_bbob())
+#calculator = rmse_calc(test_array,test_model,test_function_string)
+#print(calculator.evaluate_model_and_bbob())

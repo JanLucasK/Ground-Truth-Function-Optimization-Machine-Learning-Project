@@ -1,16 +1,17 @@
 {
     "data_file_path":[
+        "./data/raw/f_01_s_1000.parquet",
         "./data/raw/f_01_s_1000.parquet"
     ],
-    "seed":[42],
-    "neurons_per_layer": [64],
-    "num_layers": [4],
-    "learning_rate": [0.001],
-    "batch_size": [20],
-    "num_epochs": [10],
-    "save_image": [true],
-    "image_name": ["test.png"],
-    "save_model": [true],
-    "model_name": ["test.pth"],
-    "gt_function_show":[false]
+    "seed":[42,42],
+    "neurons_per_layer": [64,64],
+    "num_layers": [4,4],
+    "learning_rate": [0.001,0.001],
+    "batch_size": [20,20],
+    "num_epochs": [10,10],
+    "save_image": [true,true],
+    "image_name": ["test.png","test2.png"],
+    "save_model": [true,true],
+    "model_name": ["test.pth","test2.pth"],
+    "gt_function_show":[false,false]
 }
