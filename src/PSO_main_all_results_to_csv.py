@@ -46,13 +46,15 @@ def main():
     ]
     
     def get_version_from_path(path):
+        # get version from path
         parts = path.split('/')
         if len(parts) >= 2:
-            return parts[-2]  # Get the second to last part of the path
+            return parts[-2]  
         else:
             return 'Unknown'
     
     def get_size_from_path(path):
+        # get data size from path
         if "_1" in path:
             return '100'
         elif "_2" in path:
@@ -83,6 +85,7 @@ def main():
             for _ in range(5):
                 name = f"{model_name}_{seed}"
                 np.random.seed(seed)
+                # setting save_image to false because images should not be saved due to the high processing time
                 result_nn, result_bbob, nn_path_df, _= pso_opt.optimize(model_path=model_path, function=model_name,
                                                                swarmsize=swarmsize,
                                                                niter=niter, seed=seed,

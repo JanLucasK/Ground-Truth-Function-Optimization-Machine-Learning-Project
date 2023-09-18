@@ -30,16 +30,18 @@ class PSO_optimizer():
             penalty = 0
             for val, (min_val, max_val) in zip(x, self.input_bounds):
                 if val < min_val or val > max_val:
-                    penalty += 1e5  # Adjust the penalty value based on your specific needs 
+                    penalty += 1e5   
         
         # Convert x to torch tensor
-        x_tensor = torch.tensor(x, dtype=torch.float32).unsqueeze(0)  # unsqueeze to add batch dimension
+        x_tensor = torch.tensor(x, dtype=torch.float32).unsqueeze(0)  
         y = self.model(x_tensor)
         y_scalar = torch.sum(y).item() + penalty
         
-        model_point = [x[0], x[1], y_scalar] # Create a point with x, y, and scalar value
+        # Create a point with x, y, and scalar value
+        model_point = [x[0], x[1], y_scalar] 
 
-        self.model_path.loc[len(self.model_path)] = model_point # Add point to the model path
+        # Add point to the model path
+        self.model_path.loc[len(self.model_path)] = model_point 
         return y_scalar
     
     def optimize(self, model_path, function='f_01', niter=100, swarmsize=50, image_name = "Default", save_image=False, seed=42):
@@ -99,29 +101,35 @@ class PSO_optimizer():
             best_particles = []  # reset list 
             for j in range(0, len(path), swarmsize):
                 swarm = path[j:j+swarmsize]
-                best_particle = swarm.loc[swarm['y'].idxmin()]  # Find the best particle in the swarm
+
+                # Find the best particle in the swarm
+                best_particle = swarm.loc[swarm['y'].idxmin()]  
                 best_particles.append(best_particle)
 
-                ax.scatter(swarm['x1'], swarm['x2'], c='red', s=10, marker='o', alpha=0.5) # Plot swarm particles
-
+                # Plot swarm particles
+                ax.scatter(swarm['x1'], swarm['x2'], c='red', s=10, marker='o', alpha=0.5) 
             best_particles = pd.concat(best_particles)
-            ax.scatter(best_particles['x1'], best_particles['x2'], c='green', s=100, marker='o') # Plot best particles
+
+            # Plot best particles
+            ax.scatter(best_particles['x1'], best_particles['x2'], c='green', s=100, marker='o') 
 
             if ax is ax1:
-                ax.scatter(x=result_model[0], y=result_model[1], c='black', s=250, marker='x') # Plot model result
+                ax.scatter(x=result_model[0], y=result_model[1], c='black', s=250, marker='x')
             else:
-                ax.scatter(x=result_bbob[0], y=result_bbob[1], c='black', s=250, marker='x') # Plot BBOB result
+                ax.scatter(x=result_bbob[0], y=result_bbob[1], c='black', s=250, marker='x') 
              
         ax1.set_title("Model Predictions")
         ax2.set_title("BBOB Function")
 
         plt.tight_layout()
         if self.save_image:
-            plt.savefig(f'images/PSO/2_50_SwarmSize_v3_5/{self.image_name}', dpi=300)  # Save the plot as a PNG image
+            plt.savefig(f'images/PSO/2_50_SwarmSize_v3_5/{self.image_name}', dpi=300)  
         
         # plt.show()
-        self.model_path = pd.DataFrame(columns=["x1", "x2", "y"])  # Reset data
-        self.bbob_path = pd.DataFrame(columns=["x1", "x2", "y"])  # Reset data
+
+        # Reset data
+        self.model_path = pd.DataFrame(columns=["x1", "x2", "y"])  
+        self.bbob_path = pd.DataFrame(columns=["x1", "x2", "y"])  
         return plt
     
     def call_bbob(self, x):
@@ -130,16 +138,17 @@ class PSO_optimizer():
             penalty = 0
             for val, (min_val, max_val) in zip(x, self.input_bounds):
                 if val < min_val or val > max_val:
-                    penalty += 1e5  # Adjust the penalty value based on your specific needs
-        
+                    penalty += 1e5  
+
         x_tensor = torch.tensor(x, dtype=torch.float32)
-        x_tensor = x_tensor.view(1,-1) # Reshape the input tensor (because of f3)
+        # Reshape the input tensor (because of f3)
+        x_tensor = x_tensor.view(1,-1) 
         y = self.bbob(x_tensor)
         y_scalar = torch.sum(y).item() + penalty
         
         model_point = [x[0], x[1], y_scalar]
 
-        self.bbob_path.loc[len(self.bbob_path)] = model_point  # Add the evaluated point to the BBOB path
+        self.bbob_path.loc[len(self.bbob_path)] = model_point  
         return y_scalar
     
     def callback(self, x, f, accept):
@@ -147,7 +156,7 @@ class PSO_optimizer():
         self.path.append(x)
     
     def _get_gt_function(self, x_grid, y_grid):
-        fn = self.bbob # BBOB function for ground-truth evaluation
+        fn = self.bbob 
         flat_grid = np.column_stack((x_grid.ravel(), y_grid.ravel()))
 
         # Convert flat_grid to a PyTorch Tensor

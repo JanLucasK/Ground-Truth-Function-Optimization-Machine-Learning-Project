@@ -31,16 +31,18 @@ class PSO_optimizer():
             penalty = 0
             for val, (min_val, max_val) in zip(x, self.input_bounds):
                 if val < min_val or val > max_val:
-                    penalty += 1e5  # Adjust the penalty value based on your specific needs 
+                    penalty += 1e5  
         
         # Convert x to torch tensor
-        x_tensor = torch.tensor(x, dtype=torch.float32).unsqueeze(0)  # unsqueeze to add batch dimension
+        x_tensor = torch.tensor(x, dtype=torch.float32).unsqueeze(0)  
         y = self.model(x_tensor)
         y_scalar = torch.sum(y).item() + penalty
         
-        model_point = [x[0], x[1], y_scalar] # Create a point with x, y, and scalar value
+        # Create a point with x, y, and scalar value
+        model_point = [x[0], x[1], y_scalar] 
 
-        self.model_path.loc[len(self.model_path)] = model_point # Add point to the model path
+        # Add point to the model path
+        self.model_path.loc[len(self.model_path)] = model_point 
         return y_scalar
     
     def optimize(self, model_path, function='f_01', niter=100, swarmsize=50, image_name = "Default", save_image=False, seed=42):
@@ -110,13 +112,14 @@ class PSO_optimizer():
 
         # Save the animation
         if self.save_image:
-            anim_filename = f'images/PSO/50_SwarmSize_v5/Animated/{self.image_name}'  # Specify the filename
+            anim_filename = f'images/PSO/50_SwarmSize_v5/Animated/{self.image_name}'  
             anim.save(anim_filename, writer='pillow', fps=1, dpi=300)
 
         plt.show()
-        self.model_path = pd.DataFrame(columns=["x1", "x2", "y"])  # Reset data
-        self.bbob_path = pd.DataFrame(columns=["x1", "x2", "y"])  # Reset data
 
+        # Reset data
+        self.model_path = pd.DataFrame(columns=["x1", "x2", "y"])  
+        self.bbob_path = pd.DataFrame(columns=["x1", "x2", "y"])  
         return plt
     
     def call_bbob(self, x):
@@ -125,16 +128,18 @@ class PSO_optimizer():
             penalty = 0
             for val, (min_val, max_val) in zip(x, self.input_bounds):
                 if val < min_val or val > max_val:
-                    penalty += 1e5  # Adjust the penalty value based on your specific needs
+                    penalty += 1e5  
         
         x_tensor = torch.tensor(x, dtype=torch.float32)
-        x_tensor = x_tensor.view(1,-1) # Reshape the input tensor (because of f3)
+        # Reshape the input tensor (because of f3)
+        x_tensor = x_tensor.view(1,-1) 
         y = self.bbob(x_tensor)
         y_scalar = torch.sum(y).item() + penalty
         
         model_point = [x[0], x[1], y_scalar]
 
-        self.bbob_path.loc[len(self.bbob_path)] = model_point  # Add the evaluated point to the BBOB path
+        # Add the evaluated point to the BBOB path
+        self.bbob_path.loc[len(self.bbob_path)] = model_point  
         return y_scalar
     
     def callback(self, x, f, accept):
