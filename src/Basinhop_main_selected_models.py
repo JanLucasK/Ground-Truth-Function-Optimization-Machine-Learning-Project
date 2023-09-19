@@ -3,9 +3,8 @@ import sys
 import numpy as np
 from RMSE_Calc import rmse_calc
 
-#naming-schema: function _ size _ seed
-
 def main():
+    #Main class to carry out the Basinhopping_optimizer on a specific number of function approximations
     start = [0,0]
     step_size = 1
     temp=50
@@ -23,11 +22,12 @@ def main():
         ["f_03", "models/training_v5_f03_4.pth", "f_03_4"]
         ]
     
+    #initialize basinhopping object with bounds
     basehop_opt = bh_optimizer(input_bounds=[(-5.0,5.0), (-5.0,5.0)])
     for model in models:
         seed = 0
+        #Run 4 searches differentiated by the seeds for each model
         for _ in range(4):
-            #name = model[0]+"_"+str(seed)
             name = f"{model[2]}_{seed}" 
             np.random.seed(seed)
             result_nn, result_bbob, nn_path, bbob_path = basehop_opt.optimize(model_path= model[1], function =model[0], initial_guess = start, niter = n_iter,
@@ -39,11 +39,13 @@ def main():
             distance = np.linalg.norm(result_nn.x-result_bbob.x)
             print(distance)
             
+            #Calculate the RMSE metric for the path using the rmse_calculator calss
             calculator = rmse_calc(x_y_coordinates= nn_path, model_path=model[1], function_name=model[0], 
                                    input_bounds=[-5,5])
             rmse =calculator.evaluate_model_and_bbob()
             print(rmse)
             
+            #Save the results in a txt for easy access
             with open('opt_results/basin_results.txt', "a") as f:
                 f.write(f"{name}")
                 f.write(f"\n")

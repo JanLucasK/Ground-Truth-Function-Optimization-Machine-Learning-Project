@@ -105,6 +105,7 @@ class Basinhopping_optimizer():
         
         fig, axes = plt.subplots(1, 2, figsize= (16,8))
         
+        #create and fill plots
         for ax, model_values, path, result in zip(axes, [predictions, function_values], [path_model, path_bbob], [result_model, result_bbob]):
             
             ax.contourf(x_grid, y_grid, model_values, levels=100, cmap='viridis')

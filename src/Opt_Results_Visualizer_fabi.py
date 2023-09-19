@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def read_data_from_files(file_names):
+    #This reads a txt and transforms into a working dataframe based csv
     all_data = []
 
     for file_name in file_names:
@@ -116,46 +117,38 @@ def plot_scatterplots(df):
 
 
 def plot_boxplot(csv_1, csv_2):
-    # CSV-Dateien einlesen
-    csv_file1 = csv_1 # Ersetze 'datei1.csv' durch den Pfad zur ersten CSV-Datei
-    csv_file2 = csv_2  # Ersetze 'datei2.csv' durch den Pfad zur zweiten CSV-Datei
-
+    #Creates boxplots for all functions by datasize and optimizer used, 
+    # displays either the rmse or the distance metric, based on which code snippet are commented out
+    
+    csv_file1 = csv_1
+    csv_file2 = csv_2
     df1 = pd.read_csv(csv_file1)
     df2 = pd.read_csv(csv_file2)
 
-    # Daten zusammenführen
+    #combine dataframes
     combined_df = pd.concat([df1, df2])
     
-    max_distance = combined_df['Distance'].max()
-
-    # Boxplots erstellen
+    #Create plots
     functions = combined_df['Function'].unique()
-
-
     for function in functions:
         fig, ax = plt.subplots(figsize=(12,8))
         spacing=1.5
         width= 0.5
-        
-        #plt.figure(figsize=(10, 6))
-    
-        # Filtern der Daten für die aktuelle Funktion und PSO bzw. basinhop
+            
+        # Filter the data  for the current function and optimizer
         data_pso = combined_df[(combined_df['Function'] == function) & (combined_df['Optimizer'] == 'PSO')]
         data_basinhop = combined_df[(combined_df['Function'] == function) & (combined_df['Optimizer'] == 'BasinHopping')]
         
         unique_sizes = np.sort(np.unique(np.concatenate([data_pso['Size'].unique(), data_basinhop['Size'].unique()])))
 
-        # Create boxplots
+        # Create boxplots fpr distances, currently not used
         pso_distances_grouped = [data_pso[data_pso['Size'] == size]['Distance'].values for size in unique_sizes]
         basinhop_distances_grouped = [data_basinhop[data_basinhop['Size'] == size]['Distance'].values for size in unique_sizes]
         
 
         pso_rmse_grouped = [data_pso[data_pso['Size'] == size]['RMSE'].values for size in unique_sizes]
         basinhop_rmse_grouped = [data_basinhop[data_basinhop['Size'] == size]['RMSE'].values for size in unique_sizes]
-        #plt.boxplot(pso_distances_grouped)
-        #plt.boxplot(basinhop_distances_grouped)
-        n = len(basinhop_distances_grouped)
-        
+        n = len(pso_rmse_grouped)
 
         positions1 = np.arange(1, 2*n+1, 2) - width/1.5
         box1 = plt.boxplot(pso_rmse_grouped, positions=positions1, widths=width, patch_artist=True, boxprops=dict(facecolor='blue', alpha=0.5), labels=[f'List 1 - {i+1}' for i in range(n)])
@@ -171,20 +164,9 @@ def plot_boxplot(csv_1, csv_2):
         plt.xticks(np.arange(1, 2*n+1, 2), [f'{i}' for i in unique_sizes])
 
         # Add a legend
-        #ax.legend([box2["boxes"][0]], ['basin hop'], loc='upper right')
         ax.legend([box1["boxes"][0], box2["boxes"][0]], ['pso', 'basin hop'], loc='upper right')
         
-        
-        #plt.ylim([0,max_distance])
-        
-        #plt.xlabel('Size')
-        #plt.ylabel('Distance')
-        #plt.xticks(data_pso['Size'].unique())
-        #plt.legend(['PSO', 'basinhop'])
-        
-        #plt.grid(True)
-        
-        plt.savefig(f'images/compare_opt_Results/boxplot_RMSE_{function}.png')  # Speichern der Grafik für jede Funktion
+        plt.savefig(f'images/compare_opt_Results/boxplot_RMSE_{function}.png')
         plt.show()
 
 

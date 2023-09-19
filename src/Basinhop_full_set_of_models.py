@@ -7,28 +7,10 @@ import os
 import csv
 import numpy as np
 
-def get_version_from_path(path):
-        parts = path.split('/')
-        if len(parts) >= 2:
-            return parts[-2]  # Get the second to last part of the path
-        else:
-            return 'Unknown'
-    
-def get_size_from_path(path):
-        if "_1" in path:
-            return '100'
-        elif "_2" in path:
-            return '1000'
-        elif "_3" in path:
-            return '10000'
-        elif "_4" in path:
-            return '100000'
-        elif "_5" in path:
-            return '1000000'
-        else:
-            return 'Unknown'
+
 
 def main():
+    #Main class that implements the Basinhopping_optimizer class for each approximation in the given set
     input_bounds = [(-5.0, 5.0), (-5.0, 5.0)]
 
     # List of model files to iterate over
@@ -85,6 +67,7 @@ def main():
             model_name = model[0]
             model_path = model[1]
             seed = 0
+            #5 searches are carried out with specified seeds
             for _ in range(5):
                 name = f"{model_name}_{seed}"
                 np.random.seed(seed)
@@ -126,6 +109,28 @@ def main():
                 counter += 1
                 print('Evaluations: '+str(counter)+'/160')
                 seed += 1
-                
+
+def get_version_from_path(path):
+        parts = path.split('/')
+        if len(parts) >= 2:
+            return parts[-2]  # Get the second to last part of the path
+        else:
+            return 'Unknown'
+    
+def get_size_from_path(path):
+        if "_1" in path:
+            return '100'
+        elif "_2" in path:
+            return '1000'
+        elif "_3" in path:
+            return '10000'
+        elif "_4" in path:
+            return '100000'
+        elif "_5" in path:
+            return '1000000'
+        else:
+            return 'Unknown'
+
+              
 if __name__ == "__main__":
     main()
