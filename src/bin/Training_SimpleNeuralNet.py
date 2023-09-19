@@ -12,7 +12,6 @@ from sklearn.preprocessing import StandardScaler
 from bin.SimpleNeuralNet import SimpleNeuralNet
 from torch.utils.data import DataLoader, TensorDataset
 
-
 class Trainer():
     def __init__(self, data_file_path, seed, neurons_per_layer, num_layers, learning_rate, batch_size, num_epochs, save_image, image_name, save_model, model_name, gt_function_show):
 
@@ -23,7 +22,7 @@ class Trainer():
             device = torch.device("cpu")
             print("GPU is not available, using CPU instead")
 
-
+        # Initialize the Trainer class with various configuration parameters.
         self.data_file_path = data_file_path
         self.seed = seed
         self.neurons_per_layer = neurons_per_layer
@@ -37,60 +36,60 @@ class Trainer():
         self.model_name = model_name
         self.gt_function_show = gt_function_show
 
+        # Load data, scale data, convert data to tensors, create data loader, and initialize the model.
         self._load_data()
         # self._scale_data()
         self._data_to_tensors()
         self._create_dataloader()
         self._initialize_model()
 
-
     def _load_data(self):
-
+        # Load data from a Parquet file.
         data = pd.read_parquet(self.data_file_path)
 
         # Extracting features (x and y) and labels (k)
         X = data[['coord_0', 'coord_1']].values
         y = data['f_value'].values
-        
 
-        # Split the data into training and testing sets
+        # Split the data into training and testing sets.
         self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(X, y, test_size=0.2, random_state=self.seed)
 
-
     def _scale_data(self):
-        # Standardize the features (optional but generally recommended)
+        # Standardize the features (optional but generally recommended).
         self.scaler = StandardScaler()
         self.X_train = self.scaler.fit_transform(self.X_train)
         self.X_test = self.scaler.transform(self.X_test)
 
     def _data_to_tensors(self):
-
-        # Convert NumPy arrays to PyTorch tensors
+        # Convert NumPy arrays to PyTorch tensors.
         self.X_train_tensor = torch.tensor(self.X_train, dtype=torch.float32)
         self.X_test_tensor = torch.tensor(self.X_test, dtype=torch.float32)
         self.y_train_tensor = torch.tensor(self.y_train, dtype=torch.float32)
         self.y_test_tensor = torch.tensor(self.y_test, dtype=torch.float32)
 
     def _create_dataloader(self):
+        # Create a DataLoader to manage the training data.
         self.train_dataset = TensorDataset(self.X_train_tensor, self.y_train_tensor)
         self.train_loader = DataLoader(self.train_dataset, batch_size=self.batch_size, shuffle=True)
 
     def _initialize_model(self):
+        # Initialize the neural network model.
         self.model = SimpleNeuralNet(self.neurons_per_layer, self.num_layers)
         # Loss function
         self.criterion = nn.MSELoss()
         # Optimizer
         self.optimizer = optim.Adam(self.model.parameters(), lr=self.learning_rate)
-        
+
     def _get_gt_function(self, x_grid, y_grid):
         function_name = self.data_file_path.split("/")[-1][0:4]
         
+        # Create ground-truth functions based on the data file name.
         if function_name == 'f_01':
-            fn = bbobtorch.create_f01(2, seed=42)  # two dimension with seed 42
+            fn = bbobtorch.create_f01(2, seed=42)  # two dimensions with seed 42
         elif function_name == 'f_03':
-            fn = bbobtorch.create_f03(2, seed=42)  # two dimension with seed 42
+            fn = bbobtorch.create_f03(2, seed=42)  # two dimensions with seed 42
         elif function_name == 'f_24':
-            fn = bbobtorch.create_f24(2, seed=42)  # two dimension with seed 42
+            fn = bbobtorch.create_f24(2, seed=42)  # two dimensions with seed 42
 
         flat_grid = np.column_stack((x_grid.ravel(), y_grid.ravel()))
 
@@ -123,15 +122,12 @@ class Trainer():
 
             sns.heatmap(predictions, cmap='viridis', xticklabels=False, yticklabels=False)
             plt.tight_layout()
-            
 
         if self.save_image:
             # Save the plot as a PNG file
             function_name = self.data_file_path.split("/")[-1][0:4]
             plt.savefig(f'images/{self.image_name}', dpi=300)  # You can adjust the dpi (dots per inch) as needed
             plt.clf()
-
-
 
     def train(self):
         for epoch in range(self.num_epochs):
@@ -146,7 +142,6 @@ class Trainer():
                 loss.backward()
                 # Update the weights
                 self.optimizer.step()
-
 
             # Evaluate the model on the test set
             self.model.eval()
@@ -185,4 +180,3 @@ class Trainer():
     def _save_model(self, model, file_name):
         if self.save_model:
             torch.save(model, f'models/{file_name}')
-

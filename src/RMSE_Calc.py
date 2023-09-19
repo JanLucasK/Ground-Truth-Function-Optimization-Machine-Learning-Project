@@ -67,10 +67,5 @@ class rmse_calc:
 #test_model = ("models/v3/training_v3_f01_3.pth")
 #test_function_string = "f_01"
 
-<<<<<<< HEAD
 #calculator = rmse_calc(test_array,test_model,test_function_string)
 #print(calculator.evaluate_model_and_bbob())
-=======
-calculator = rmse_calc(test_array,test_model,test_function_string,[-5,5])
-print(calculator.evaluate_model_and_bbob())
->>>>>>> 017f4cbc54fb59a127254ec67c854e368b0d100f

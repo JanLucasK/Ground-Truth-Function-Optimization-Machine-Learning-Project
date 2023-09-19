@@ -13,9 +13,13 @@ def open_config(config_file_path):
 
 def main():
 
+    # Load a configuration from a JSON file 
     config = open_config("config/training_version_6.json")
 
-    for i in range(0,len(config["data_file_path"])):
+    # Iterate over the range of data files specified in the configuration.
+    for i in range(0, len(config["data_file_path"])):
+        
+        # Create an instance of the Trainer class with various configuration parameters from the loaded JSON.
         trainer = Trainer(
             config["data_file_path"][i], 
             config["seed"][i], 
@@ -30,9 +34,14 @@ def main():
             config["model_name"][i],
             config["gt_function_show"][i]
         )
+        
+        # Train the neural network using the specified configuration.
         trainer.train()
-        trainer.evaluate_grid()     
+        
+        # Evaluate the trained neural network using a grid.
+        trainer.evaluate_grid()
 
-
+# Check if the script is being run as the main program.
+# If it is, execute the main() function.
 if __name__ == "__main__":
     main()
